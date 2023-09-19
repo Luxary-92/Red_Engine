@@ -1,0 +1,33 @@
+﻿  Application.cpp
+  Color.cpp
+  glmath.cpp
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(12,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(27,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(43,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(53,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(53,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(72,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(87,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(103,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(600,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(618,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(618,33): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(758,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(778,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\glmath.cpp(778,33): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Light.cpp
+  log.cpp
+  Main.cpp
+  ModuleAudio.cpp
+  ModuleCamera3D.cpp
+  ModuleInput.cpp
+  ModulePhysics3D.cpp
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\ModulePhysics3D.cpp(24,2): warning C4150: deletion of pointer to incomplete type 'DebugDrawer'; no destructor called
+C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\ModulePhysics3D.h(9,7): message : see declaration of 'DebugDrawer'
+  ModuleRenderer3D.cpp
+  ModuleSceneIntro.cpp
+  ModuleWindow.cpp
+  Primitive.cpp
+  Timer.cpp
+  Generating Code...
+  3D Physics.vcxproj -> C:\Users\enricac3\Downloads\Physics II - Bullet3D - Handout 02\Debug\3D Physics - class2 Handout.exe
