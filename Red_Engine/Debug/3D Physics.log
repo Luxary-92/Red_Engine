@@ -1,4 +1,9 @@
-﻿  ModuleCamera3D.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\ndnco\Desktop\Red_Engine\Red_Engine\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-  3D Physics.vcxproj -> C:\Users\ndnco\Desktop\Red_Engine\Red_Engine\Debug\3D Physics - class5.exe
+﻿  imgui_impl_opengl3.cpp
+  imgui_impl_sdl.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  Generando código...
+  3D Physics.vcxproj -> D:\GitHub\Red_Engine\Red_Engine\Debug\3D Physics - class5.exe

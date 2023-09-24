@@ -78,6 +78,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_sdl.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imconfig.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_internal.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imstb_textedit.h" />
+    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imstb_truetype.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
@@ -152,6 +161,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_sdl.cpp" />
+    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui.cpp" />
+    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="Light.cpp" />
