@@ -40,6 +40,9 @@
     <Filter Include="Sources\ImGui">
       <UniqueIdentifier>{e373d026-318b-4e69-a8a5-38b8b9b46ede}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\ImGui\Backends">
+      <UniqueIdentifier>{adc989e3-d526-45f7-8451-a0010ef20aef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -258,32 +261,32 @@
     <ClInclude Include="glmath.h">
       <Filter>Externals</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_opengl3.h">
+    <ClInclude Include="ImGui\imconfig.h">
       <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_opengl3_loader.h">
+    <ClInclude Include="ImGui\imgui.h">
       <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_sdl.h">
+    <ClInclude Include="ImGui\imgui_internal.h">
       <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imconfig.h">
+    <ClInclude Include="ImGui\imstb_rectpack.h">
       <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui.h">
+    <ClInclude Include="ImGui\imstb_textedit.h">
       <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_internal.h">
+    <ClInclude Include="ImGui\imstb_truetype.h">
       <Filter>Sources\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imstb_rectpack.h">
-      <Filter>Sources\ImGui</Filter>
+    <ClInclude Include="ImGui\backends\imgui_impl_opengl3.h">
+      <Filter>Sources\ImGui\Backends</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imstb_textedit.h">
-      <Filter>Sources\ImGui</Filter>
+    <ClInclude Include="ImGui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>Sources\ImGui\Backends</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imstb_truetype.h">
-      <Filter>Sources\ImGui</Filter>
+    <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h">
+      <Filter>Sources\ImGui\Backends</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -419,26 +422,26 @@
     <ClCompile Include="glmath.cpp">
       <Filter>Externals</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_opengl3.cpp">
+    <ClCompile Include="ImGui\imgui.cpp">
       <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\backends\imgui_impl_sdl.cpp">
+    <ClCompile Include="ImGui\imgui_demo.cpp">
       <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui.cpp">
+    <ClCompile Include="ImGui\imgui_draw.cpp">
       <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_demo.cpp">
+    <ClCompile Include="ImGui\imgui_tables.cpp">
       <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_draw.cpp">
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
       <Filter>Sources\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_tables.cpp">
-      <Filter>Sources\ImGui</Filter>
+    <ClCompile Include="ImGui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Sources\ImGui\Backends</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\ndnco\Desktop\Red_Engine\NP_CUP_WORKING_IMGUI\NP_Cup_Engine\ImGui\imgui_widgets.cpp">
-      <Filter>Sources\ImGui</Filter>
+    <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp">
+      <Filter>Sources\ImGui\Backends</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
