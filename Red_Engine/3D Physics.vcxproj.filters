@@ -40,6 +40,9 @@
     <Filter Include="Sources\Imgui">
       <UniqueIdentifier>{22f1fca7-39f9-41a3-9afe-ddb01b8e909a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Imgui\backends">
+      <UniqueIdentifier>{9e74fe78-5b56-41ec-937e-16fcbb9754c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -262,15 +265,6 @@
     <ClInclude Include="ImGui\imgui.h">
       <Filter>Sources\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\backends\imgui_impl_opengl3.h">
-      <Filter>Sources\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\backends\imgui_impl_opengl3_loader.h">
-      <Filter>Sources\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\backends\imgui_impl_sdl.h">
-      <Filter>Sources\Imgui</Filter>
-    </ClInclude>
     <ClInclude Include="ImGui\imgui_internal.h">
       <Filter>Sources\Imgui</Filter>
     </ClInclude>
@@ -282,6 +276,15 @@
     </ClInclude>
     <ClInclude Include="ImGui\imstb_truetype.h">
       <Filter>Sources\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\backends\imgui_impl_sdl2.h">
+      <Filter>Sources\Imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>Sources\Imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\backends\imgui_impl_opengl3.h">
+      <Filter>Sources\Imgui\backends</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -426,17 +429,17 @@
     <ClCompile Include="ImGui\imgui_draw.cpp">
       <Filter>Sources\Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\backends\imgui_impl_opengl3.cpp">
-      <Filter>Sources\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGui\backends\imgui_impl_sdl.cpp">
-      <Filter>Sources\Imgui</Filter>
-    </ClCompile>
     <ClCompile Include="ImGui\imgui_tables.cpp">
       <Filter>Sources\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_widgets.cpp">
       <Filter>Sources\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\backends\imgui_impl_sdl2.cpp">
+      <Filter>Sources\Imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Sources\Imgui\backends</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
