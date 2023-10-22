@@ -72,6 +72,7 @@ void ModuleEditor::DrawEditor()
         if (ImGui::Button("Close"))
         {
             //here to close the app
+            App->AppClose = true;
         }
         ImGui::EndMainMenuBar();
     }

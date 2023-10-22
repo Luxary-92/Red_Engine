@@ -60,10 +60,12 @@ int main(int argc, char ** argv)
 				state = MAIN_EXIT;
 			}
 
-			if (update_return == UPDATE_STOP)
+			if (update_return == UPDATE_STOP) {
 				state = MAIN_FINISH;
+			}
+
 		}
-			break;
+		break;
 
 		case MAIN_FINISH:
 

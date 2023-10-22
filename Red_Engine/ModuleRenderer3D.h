@@ -30,7 +30,8 @@ public:
 	Light lights[MAX_LIGHTS];
 	SDL_GLContext context;
 	CPlane Grid;
-	
+
+
 	//You won't need this after using Frustum
 	mat4x4 ProjectionMatrix;
 };
