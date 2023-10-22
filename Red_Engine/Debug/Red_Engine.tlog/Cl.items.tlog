@@ -44,6 +44,7 @@ D:\GitHub\Red_Engine\Red_Engine\MathGeoLib\include\Math\SSEMath.cpp;D:\GitHub\Re
 D:\GitHub\Red_Engine\Red_Engine\MathGeoLib\include\Math\TransformOps.cpp;D:\GitHub\Red_Engine\Red_Engine\Debug\TransformOps.obj
 D:\GitHub\Red_Engine\Red_Engine\MathGeoLib\include\Time\Clock.cpp;D:\GitHub\Red_Engine\Red_Engine\Debug\Clock.obj
 D:\GitHub\Red_Engine\Red_Engine\ModuleCamera3D.cpp;D:\GitHub\Red_Engine\Red_Engine\Debug\ModuleCamera3D.obj
+D:\GitHub\Red_Engine\Red_Engine\ModuleEditor.cpp;D:\GitHub\Red_Engine\Red_Engine\Debug\ModuleEditor.obj
 D:\GitHub\Red_Engine\Red_Engine\ModuleInput.cpp;D:\GitHub\Red_Engine\Red_Engine\Debug\ModuleInput.obj
 D:\GitHub\Red_Engine\Red_Engine\ModuleRenderer3D.cpp;D:\GitHub\Red_Engine\Red_Engine\Debug\ModuleRenderer3D.obj
 D:\GitHub\Red_Engine\Red_Engine\ModuleWindow.cpp;D:\GitHub\Red_Engine\Red_Engine\Debug\ModuleWindow.obj
