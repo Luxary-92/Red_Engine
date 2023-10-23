@@ -64,6 +64,9 @@ void ModuleEditor::DrawEditor()
             if (ImGui::BeginMenu("About"))
             {
                 ImGui::Text("Red Engine");
+                ImGui::Text("Engine created for the subject of VideoGame Engines");
+                ImGui::Text("Created by Nixon Daniel Correa Albarracín & Enric Arxer Cortés");
+                ImGui::Text("Github page : https://github.com/Luxary-92/Red_Engine");
                 ImGui::EndMenu();
             }
             ImGui::Text("Hello world!");
@@ -79,7 +82,12 @@ void ModuleEditor::DrawEditor()
 
     if (ImGui::Begin("Configuration"))
     {
-        //ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size());
+        ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size());
+        ImGui::End();
+    }
+    if (ImGui::Begin("Configuration"))
+    {
+        ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size());
         ImGui::End();
     }
 
