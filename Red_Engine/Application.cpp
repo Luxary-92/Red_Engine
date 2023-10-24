@@ -99,10 +99,10 @@ bool Application::CleanUp()
 	}
 	return ret;
 }
-//float Application::GetDT()
-//{
-//	return dt;
-//}
+float Application::GetDT()
+{
+	return dt;
+}
 
 void Application::AddModule(Module* mod)
 {

@@ -122,6 +122,6 @@ void ModuleEditor::AddFPS(const float aFPS)
                 mFPSLog[i] = iCopy;
             }
         }
-        mFPSLog[mFPSLog.capacity() - 1] = aFPS;
+        mFPSLog[mFPSLog.size() - 1] = aFPS;
     }
 }

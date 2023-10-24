@@ -34,7 +34,7 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
-	//float GetDT();
+	float GetDT();
 	bool AppClose = false;
 
 private:

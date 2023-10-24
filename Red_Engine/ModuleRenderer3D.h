@@ -7,6 +7,8 @@
 #include "MathGeoLib/include/Math/float4x4.h"
 #include "Primitive.h"
 
+#include "Glew/include/glew.h"
+
 //todo: REMOVE this before 1st delivery!!
 #include "glmath.h"
 
@@ -26,6 +28,8 @@ public:
 	void OnResize(int width, int height);
 
 public:
+
+	GLuint VBO, EBO, VAO;
 
 	Light lights[MAX_LIGHTS];
 	SDL_GLContext context;
