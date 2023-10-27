@@ -54,22 +54,28 @@ void ModuleEditor::DrawEditor()
             ImGui::Text("Hello world!");
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("Objects"))
+        if (ImGui::BeginMenu("GameObjects"))
         {
-            ImGui::Text("Hello world!");
+            if (ImGui::MenuItem("Github : Red Engine")) {
+            }
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("Help"))
         {
-            if (ImGui::BeginMenu("About"))
-            {
-                ImGui::Text("Red Engine");
-                ImGui::Text("Engine created for the subject of VideoGame Engines");
-                ImGui::Text("Created by Nixon Daniel Correa Albarracín & Enric Arxer Cortés");
-                ImGui::Text("Github page : https://github.com/Luxary-92/Red_Engine");
-                ImGui::EndMenu();
-            }
+
             ImGui::Text("Hello world!");
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("About"))
+        {
+            ImGui::Text("Red Engine");
+            ImGui::Text("Engine created for the subject of VideoGame Engines");
+            ImGui::Text("Created by Nixon Daniel Correa Albarracin & Enric Arxer Cortes");
+            ImGui::Text("Github page : https://github.com/Luxary-92/Red_Engine");
+            if (ImGui::MenuItem("Github : Red Engine")) {
+                ShellExecute(0, 0, "https://github.com/Luxary-92/Red_Engine", 0, 0, SW_SHOW);
+            }
+
             ImGui::EndMenu();
         }
         if (ImGui::Button("Close"))
@@ -114,7 +120,7 @@ void ModuleEditor::AddFPS(const float aFPS)
     }
     else
     {
-        for (unsigned int i = 0; i < mFPSLog.size(); i++)
+        for (unsigned int i = 0; i <= mFPSLog.size(); i++)
         {
             if (i + 1 < mFPSLog.size())
             {
