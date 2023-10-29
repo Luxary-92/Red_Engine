@@ -19,7 +19,14 @@ public:
 	bool CleanUp() override;
 
 	void AddFPS(const float aFPS);
-	std::vector<float> mFPSLog;
+	std::vector<float> framesLog;
+	float frames;
+	float framesMax = 30;
+
+	void AddMS(const float aDT);
+	std::vector<float> milisecodsLog;
+	float milisecods;
+	float milisecodsMax = 30;
 };
 
 #endif //MODULE_EDITOR
