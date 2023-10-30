@@ -175,7 +175,7 @@ bool ModuleEditor::CleanUp()
 
 void ModuleEditor::AddFPS(const float aFPS)
 {
-    if (framesLog.size() < framesMax)
+    if (framesLog.size() < framesShown)
     {
         framesLog.push_back(aFPS);
     }
@@ -194,7 +194,7 @@ void ModuleEditor::AddFPS(const float aFPS)
 }
 void ModuleEditor::AddMS(const float aDT)
 {
-    if (milisecodsLog.size() < milisecodsMax)
+    if (milisecodsLog.size() < milisecodsShown)
     {
         milisecodsLog.push_back(aDT);
     }
