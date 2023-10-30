@@ -14,6 +14,19 @@ bld/
 [Ll]og/
 [Ll]ogs
 
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# Visual Studio 2017 auto generated files
+Generated\ Files/
+
 # VS Code files for those working on multiple tools
 .vscode/*
 !.vscode/settings.json
@@ -50,6 +63,34 @@ bld/
 *.pidb
 *.svclog
 *.scc
+.tlog
+.1.tlog
+
+# Chutzpah Test files
+_Chutzpah*
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Trace Files
+*.e2e
+
+# TFS 2012 Local Workspace
+$tf/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
