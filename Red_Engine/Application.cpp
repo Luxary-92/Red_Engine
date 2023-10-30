@@ -104,6 +104,11 @@ float Application::GetDT()
 	return dt;
 }
 
+float Application::GetFR()
+{
+	return 1/dt;
+}
+
 void Application::AddModule(Module* mod)
 {
 	list_modules.push_back(mod);

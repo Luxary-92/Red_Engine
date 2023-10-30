@@ -35,6 +35,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	float GetDT();
+	float GetFR();
 	bool AppClose = false;
 
 private:
