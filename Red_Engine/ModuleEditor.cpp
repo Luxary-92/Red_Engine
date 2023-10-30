@@ -63,7 +63,7 @@ void ModuleEditor::DrawEditor()
             }
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("Editor Windows"))
+        if (ImGui::BeginMenu("EditorWindows"))
         {
             if (ImGui::MenuItem("Console")) {
 
@@ -83,23 +83,28 @@ void ModuleEditor::DrawEditor()
         {
             ImGui::Text("Red Engine");ImGui::NewLine();
 
-            ImGui::Text("Engine created for the subject of VideoGame Engines Created by Nixon Daniel Correa Albarracin & Enric Arxer Cortes");
-            ImGui::Text("Github page : https://github.com/Luxary-92/Red_Engine");ImGui::NewLine();
+            ImGui::Text("Engine created for the subject of VideoGame Engines Created by : ");
 
-            if (ImGui::MenuItem("Github : Red Engine")) {
+            if (ImGui::MenuItem("Nixon Daniel Correa Albarracin")) {
+                ShellExecute(0, 0, "https://github.com/Nixonbit3", 0, 0, SW_SHOW);
+            }
+            ImGui::Text("&");
+            if (ImGui::MenuItem("Enric Arxer Cortes")) {
+                ShellExecute(0, 0, "https://github.com/Luxary-92", 0, 0, SW_SHOW);
+            }
+            if (ImGui::MenuItem("Github page : https://github.com/Luxary-92/Red_Engine")) {
                 ShellExecute(0, 0, "https://github.com/Luxary-92/Red_Engine", 0, 0, SW_SHOW);
             }
-            
+
+            //License
+
+            ImGui::NewLine();
             ImGui::Text("License:");ImGui::NewLine();
-
             ImGui::TextWrapped("Copyright (c) 2023 Luxary"); ImGui::NewLine();
-
             ImGui::TextWrapped("Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and /or sell copies of the Software, and to permit persons to whom the Software i furnished to do so, subject to the following conditions : "); 
             ImGui::NewLine();
-
             ImGui::TextWrapped("The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."); 
             ImGui::NewLine();
-
             ImGui::TextWrapped("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."); 
             ImGui::NewLine();
 
@@ -134,6 +139,7 @@ void ModuleEditor::DrawEditor()
         ImGui::PlotHistogram("", milisecodsLog.data(), milisecodsLog.size(), 0, "Miliseconds", 0.0f, 0.03f, ImVec2(200, 100));
 
         ImGui::BulletText(""); ImGui::TextWrapped("Configuration for all variables on each module (renderer, window, input, textures)");
+
         ImGui::BulletText(""); ImGui::TextWrapped("Information output of memory consumption, hardware detection and software versions(SDL, OpenGL, DevIL).");
 
         ImGui::End();
@@ -150,7 +156,13 @@ void ModuleEditor::DrawEditor()
     {
         ImGui::TextWrapped("You should display information about the components of the selected GameObject");
 
-        ImGui::BulletText("");ImGui::TextWrapped("Transform: only for display purposes. Show position, rotation and scale for the selected GameObject.");
+        ImGui::BulletText("");
+        ImGui::Text("Position: ");
+        ImGui::Text("Rotation: ");
+        ImGui::Text("scale: ");
+        ImGui::NewLine();
+
+        ImGui::TextWrapped("Transform: only for display purposes. Show position, rotation and scale for the selected GameObject.");
 
         ImGui::BulletText("");ImGui::TextWrapped("Mesh: information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face).");
 

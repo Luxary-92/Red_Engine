@@ -26,7 +26,7 @@ public:
 	void AddMS(const float aDT);
 	std::vector<float> milisecodsLog;
 	float milisecods;
-	float milisecodsShown = 30;
+	float milisecodsShown = 20;
 };
 
 #endif //MODULE_EDITOR
