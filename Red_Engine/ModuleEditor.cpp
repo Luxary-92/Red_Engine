@@ -42,8 +42,6 @@ void ModuleEditor::DrawEditor()
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
-
-
     //Top Menu barr
     if (ImGui::BeginMainMenuBar())
     {
@@ -63,19 +61,19 @@ void ModuleEditor::DrawEditor()
             }
             ImGui::EndMenu();
         }
-        if (ImGui::BeginMenu("EditorWindows"))
+        if (ImGui::BeginMenu("Windows"))
         {
-            if (ImGui::MenuItem("Console")) {
-
+            if (ImGui::MenuItem("Configuration", nullptr, ConfigState)) {
+                ConfigState = !ConfigState;
             }
-            if (ImGui::MenuItem("Configuration")) {
-
+            if (ImGui::MenuItem("Hierarchy", nullptr, HierarchyState)) {
+                HierarchyState = !HierarchyState;
             }
-            if (ImGui::MenuItem("Hierarchy")) {
-
+            if (ImGui::MenuItem("Inspector", nullptr, InspectorState)) {
+                InspectorState = !InspectorState;
             }
-            if (ImGui::MenuItem("Inspector")) {
-
+            if (ImGui::MenuItem("Console", nullptr, ConsoleState)) {
+                ConsoleState = !ConsoleState;
             }
             ImGui::EndMenu();
         }
@@ -85,6 +83,7 @@ void ModuleEditor::DrawEditor()
 
             ImGui::Text("Engine created for the subject of VideoGame Engines Created by : ");
 
+            ImGui::NewLine();
             if (ImGui::MenuItem("Nixon Daniel Correa Albarracin")) {
                 ShellExecute(0, 0, "https://github.com/Nixonbit3", 0, 0, SW_SHOW);
             }
@@ -118,60 +117,82 @@ void ModuleEditor::DrawEditor()
         ImGui::EndMainMenuBar();
     }
     //Consloe
-    if (ImGui::Begin("Console"))
-    {
-        ImGui::TextWrapped("The window should LOG the geometry loading process from ASSIMP and the external libraries initialization process");
+    if (ConsoleState) {
+        ImGui::Begin("Console", &ConsoleState, ImGuiWindowFlags_MenuBar); {
 
-        ImGui::End();
+            ImGui::TextWrapped("The window should LOG the geometry loading process from ASSIMP and the external libraries initialization process");
+            ImGui::End();
+        }
     }
+
     //Configuration
-    if (ImGui::Begin("Configuration"))
-    {
-        //Frames and miliseconds
-        frames = App->GetFR();
-        AddFPS(frames);
-        milisecods = App->GetDT();
-        AddMS(milisecods);
+    if (ConfigState){
+        ImGui::Begin("Configuration", &ConfigState, ImGuiWindowFlags_MenuBar); {
 
-        ImGui::BulletText(""); ImGui::TextWrapped("A graph for the frames per second");
+            //Frames and miliseconds
+            frames = App->GetFR();
+            AddFPS(frames);
+            milisecods = App->GetDT();
+            AddMS(milisecods);
 
-        ImGui::PlotHistogram("", framesLog.data(), framesLog.size(),0, "FPS", 0.0f, 100.0f, ImVec2(200, 100));
-        ImGui::PlotHistogram("", milisecodsLog.data(), milisecodsLog.size(), 0, "Miliseconds", 0.0f, 0.03f, ImVec2(200, 100));
+            if (ImGui::CollapsingHeader("Framerate", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::PlotHistogram("", framesLog.data(), framesLog.size(), 0, "FPS", 0.0f, 100.0f, ImVec2(200, 100));
+                ImGui::PlotHistogram("", milisecodsLog.data(), milisecodsLog.size(), 0, "Miliseconds", 0.0f, 0.03f, ImVec2(200, 100));
+            }
+            if (ImGui::CollapsingHeader("2", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::NewLine();
+                ImGui::TextWrapped("Configuration for all variables on each module (renderer, window, input, textures)"); ImGui::NewLine();
+            }
+            if (ImGui::CollapsingHeader("3", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::NewLine();
+                ImGui::TextWrapped("Information output of memory consumption, hardware detection and software versions(SDL, OpenGL, DevIL)."); ImGui::NewLine();
+            }
 
-        ImGui::BulletText(""); ImGui::TextWrapped("Configuration for all variables on each module (renderer, window, input, textures)");
-
-        ImGui::BulletText(""); ImGui::TextWrapped("Information output of memory consumption, hardware detection and software versions(SDL, OpenGL, DevIL).");
-
-        ImGui::End();
+            ImGui::End();
+        }
     }
+
     //Hierarchy
-    if (ImGui::Begin("Hierarchy"))
-    {
-        ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window ");
+    if (HierarchyState) {
+        ImGui::Begin("Hierarchy", &HierarchyState, ImGuiWindowFlags_MenuBar); {
 
-        ImGui::End();
+            ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window "); ImGui::NewLine();
+
+            ImGui::End();
+        }
     }
+
     //Inspector
-    if (ImGui::Begin("Inspector"))
-    {
-        ImGui::TextWrapped("You should display information about the components of the selected GameObject");
+    if (InspectorState) {
+        ImGui::Begin("Inspector", &InspectorState, ImGuiWindowFlags_MenuBar); {
 
-        ImGui::BulletText("");
-        ImGui::Text("Position: ");
-        ImGui::Text("Rotation: ");
-        ImGui::Text("scale: ");
-        ImGui::NewLine();
+            if (ImGui::CollapsingHeader("Components of the selected GameObject", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::NewLine();
+                ImGui::Text("Position: ");ImGui::NewLine();
+                ImGui::Text("Rotation: "); ImGui::NewLine();
+                ImGui::Text("Scale: "); ImGui::NewLine();
+                ImGui::TextWrapped("Transform: only for display purposes. Show position, rotation and scale for the selected GameObject."); ImGui::NewLine();
+            }
+            if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::NewLine();
+                ImGui::TextWrapped("Information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face)."); ImGui::NewLine();
+            }
+            if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::NewLine();
+                ImGui::TextWrapped("Display texture size and path.There should be an option to view the selected GameObject with the checkers texture."); ImGui::NewLine();
+            }
 
-        ImGui::TextWrapped("Transform: only for display purposes. Show position, rotation and scale for the selected GameObject.");
-
-        ImGui::BulletText("");ImGui::TextWrapped("Mesh: information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face).");
-
-        ImGui::BulletText("");ImGui::TextWrapped("Texture: display texture size and path.There should be an option to view the selected GameObject with the checkers texture.");
-
-        ImGui::End();
+            ImGui::End();
+        }
     }
-    //ImGui::ShowDemoWindow();
 
+    //ImGui::ShowDemoWindow();
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }

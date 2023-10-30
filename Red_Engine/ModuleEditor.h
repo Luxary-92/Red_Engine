@@ -27,6 +27,11 @@ public:
 	std::vector<float> milisecodsLog;
 	float milisecods;
 	float milisecodsShown = 20;
+
+	bool ConfigState = true;
+	bool HierarchyState = true;
+	bool InspectorState = true;
+	bool ConsoleState = true;
 };
 
 #endif //MODULE_EDITOR
