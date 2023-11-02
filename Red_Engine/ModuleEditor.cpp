@@ -122,7 +122,6 @@ void ModuleEditor::DrawEditor()
                 ImGui::NewLine();
                 ImGui::BulletText("OpenGL %s", glGetString(GL_VERSION));
                 ImGui::BulletText("Vendor: %s", glGetString(GL_VENDOR));
-                ImGui::BulletText("Vendor: %s", glGetString(GL_VENDOR));
                 ImGui::BulletText("GLSL: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
                 if (ImGui::MenuItem("WEB -> Opengl.org"))
                 {
@@ -191,7 +190,19 @@ void ModuleEditor::DrawEditor()
             }
             if (ImGui::CollapsingHeader("Renderer", ImGuiTreeNodeFlags_DefaultOpen))
             {
-                ImGui::TextWrapped(""); ImGui::NewLine();
+                SDL_version version;
+                SDL_GetVersion(&version);
+                ImGui::BulletText("SDL %i.%i.%i", version.major, version.minor, version.patch);
+
+                const char* version_gui = ImGui::GetVersion();
+                ImGui::BulletText("ImGui %s", version_gui);
+
+                ImGui::BulletText("OpenGL %s", glGetString(GL_VERSION));
+                ImGui::BulletText("GPU-> %s", glGetString(GL_VENDOR));
+                ImGui::BulletText("Brand-> %s", glGetString(GL_RENDERER));
+
+                ImGui::BulletText("CPU -> %d", SDL_GetCPUCount());
+                ImGui::BulletText("RAM -> %.1fGb", SDL_GetSystemRAM() / 1000.f);
             }
             if (ImGui::CollapsingHeader("Window", ImGuiTreeNodeFlags_DefaultOpen))
             {
@@ -215,16 +226,6 @@ void ModuleEditor::DrawEditor()
             {
                 ImGui::TextWrapped("Camera Rotation Speed");
                 ImGui::TextWrapped("Camera Movement Speed");
-            }
-            if (ImGui::CollapsingHeader("Textures", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::TextWrapped(""); ImGui::NewLine();
-            }
-
-            if (ImGui::CollapsingHeader("Rendering", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::NewLine();
-                ImGui::TextWrapped("Information output of memory consumption, hardware detection and software versions(SDL, OpenGL, DevIL)."); ImGui::NewLine();
             }
 
             ImGui::End();

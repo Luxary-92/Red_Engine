@@ -43,7 +43,7 @@ update_status ModuleCamera3D::Update(float dt)
 	// Now we can make this movememnt frame rate independant!
 
 	float3 newPos(0,0,0);
-	speed = 3.0f * dt;
+	speed = 5.0f * dt;
 
 	//Speed
 	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
@@ -63,7 +63,7 @@ update_status ModuleCamera3D::Update(float dt)
 	//Zoom
 	if (App->input->GetMouseZ() != 0)
 	{
-		speed = 20.0f * dt;
+		speed = 50.0f * dt;
 
 		if (App->input->GetMouseZ() < 0) newPos += Z * speed;
 		if (App->input->GetMouseZ() > 0) newPos -= Z * speed;

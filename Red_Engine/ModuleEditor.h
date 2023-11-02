@@ -37,6 +37,7 @@ public:
 	int screen_height = 800;
 	bool fullscreen = false;
 	bool borderless = false;
+
 };
 
 #endif //MODULE_EDITOR
