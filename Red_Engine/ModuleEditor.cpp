@@ -135,12 +135,12 @@ void ModuleEditor::DrawEditor()
                     ShellExecute(NULL, "open", "https://glew.sourceforge.net/", NULL, NULL, SW_SHOW);
                 }
                 //MathGeoLib
+                ImGui::NewLine();
                 ImGui::BulletText("MathGeoLib 2/11/2023");
                 if (ImGui::MenuItem("WEB -> Github MathGeoLib"))
                 {
                     ShellExecute(NULL, "open", "https://github.com/juj/MathGeoLib/commit/55053da5e3e55a83043af7324944407b174c3724", NULL, NULL, SW_SHOW);
                 }
-
             }
             //License
             if (ImGui::CollapsingHeader("License", ImGuiTreeNodeFlags_DefaultOpen))
@@ -188,11 +188,37 @@ void ModuleEditor::DrawEditor()
                 ImGui::PlotHistogram("", framesLog.data(), framesLog.size(), 0, "FPS", 0.0f, 100.0f, ImVec2(200, 100));
                 ImGui::PlotHistogram("", milisecodsLog.data(), milisecodsLog.size(), 0, "Miliseconds", 0.0f, 0.03f, ImVec2(200, 100));
             }
-            if (ImGui::CollapsingHeader("2", ImGuiTreeNodeFlags_DefaultOpen))
+            if (ImGui::CollapsingHeader("Renderer", ImGuiTreeNodeFlags_DefaultOpen))
             {
-                ImGui::NewLine();
-                ImGui::TextWrapped("Configuration for all variables on each module (renderer, window, input, textures)"); ImGui::NewLine();
+                ImGui::TextWrapped(""); ImGui::NewLine();
             }
+            if (ImGui::CollapsingHeader("Window", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::Text("Screen Width"); ImGui::NewLine();
+                ImGui::SliderInt(" ", &screen_width, 640, 1920);
+                ImGui::Text("Screen Height"); ImGui::NewLine();
+                ImGui::SliderInt(" ", &screen_height, 480, 1080);
+                if (ImGui::Checkbox("FullScreen", &fullscreen));
+                if (ImGui::Checkbox("Borderless", &borderless));
+
+                if (ImGui::Button("[APPLY]")) {
+
+                    App->window->SettingsScreen(screen_width, screen_height, fullscreen, borderless);
+                }
+                if (ImGui::Button("[DEFAULT]")) {
+
+                    App->window->SettingsScreen(1280, 800, false, false);
+                }
+            }
+            if (ImGui::CollapsingHeader("Input", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::TextWrapped(""); ImGui::NewLine();
+            }
+            if (ImGui::CollapsingHeader("Textures", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::TextWrapped(""); ImGui::NewLine();
+            }
+
             if (ImGui::CollapsingHeader("3", ImGuiTreeNodeFlags_DefaultOpen))
             {
                 ImGui::NewLine();

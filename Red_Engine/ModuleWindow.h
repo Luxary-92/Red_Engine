@@ -20,6 +20,8 @@ public:
 
 	void SetTitle(const char* title);
 
+	void SettingsScreen(int width, int height, bool fullscreen, bool borderless);
+
 public:
 	//The window we'll be rendering to
 	SDL_Window* window;

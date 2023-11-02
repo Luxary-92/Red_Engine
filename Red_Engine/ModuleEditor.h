@@ -32,6 +32,11 @@ public:
 	bool HierarchyState = true;
 	bool InspectorState = true;
 	bool ConsoleState = true;
+
+	int screen_width = 1280;
+	int screen_height = 800;
+	bool fullscreen = false;
+	bool borderless = false;
 };
 
 #endif //MODULE_EDITOR
