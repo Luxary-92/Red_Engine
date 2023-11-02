@@ -104,41 +104,47 @@ void ModuleEditor::DrawEditor()
                 ImGui::NewLine();
                 SDL_version version;
                 SDL_GetVersion(&version);
-                ImGui::Text("Using SDL %i.%i.%i", version.major, version.minor, version.patch);
-                if (ImGui::MenuItem("Libsdl.org"))
+                ImGui::BulletText("SDL %i.%i.%i", version.major, version.minor, version.patch);
+                if (ImGui::MenuItem("WEB -> Libsdl.org"))
                 {
                     ShellExecute(NULL, "open", "https://www.libsdl.org/", NULL, NULL, SW_SHOW);
                 }
                 //ImGui
                 ImGui::NewLine();
                 const char* version_gui = ImGui::GetVersion();
-                ImGui::Text("Using ImGui %s", version_gui);
-                if (ImGui::MenuItem("Github ImGui"))
+                ImGui::BulletText("ImGui %s", version_gui);
+                if (ImGui::MenuItem("WEB -> Github ImGui"))
                 {
                     ShellExecute(NULL, "open", "https://github.com/ocornut/imgui", NULL, NULL, SW_SHOW);
                 }
                 //OpenGl
                 ImGui::NewLine();
-                ImGui::Text("OpenGL version supported %s", glGetString(GL_VERSION));
-                ImGui::Text("Vendor: %s", glGetString(GL_VENDOR));
-                ImGui::Text("Renderer: %s", glGetString(GL_RENDERER));
-                ImGui::Text("GLSL: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
-                if (ImGui::MenuItem("Opengl.org"))
+                ImGui::BulletText("OpenGL %s", glGetString(GL_VERSION));
+                ImGui::BulletText("Vendor: %s", glGetString(GL_VENDOR));
+                ImGui::BulletText("Renderer: %s", glGetString(GL_RENDERER));
+                ImGui::BulletText("GLSL: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
+                if (ImGui::MenuItem("WEB -> Opengl.org"))
                 {
                     ShellExecute(NULL, "open", "https://www.opengl.org/", NULL, NULL, SW_SHOW);
                 }
                 //Glew
                 ImGui::NewLine();
-                ImGui::Text("Using Glew %s", glewGetString(GLEW_VERSION));
-                if (ImGui::MenuItem("Glew.sourceforge.net"))
+                ImGui::BulletText("Glew %s", glewGetString(GLEW_VERSION));
+                if (ImGui::MenuItem("WEB -> Glew.sourceforge.net"))
                 {
                     ShellExecute(NULL, "open", "https://glew.sourceforge.net/", NULL, NULL, SW_SHOW);
                 }
+                //MathGeoLib
+                ImGui::BulletText("MathGeoLib 2/11/2023");
+                if (ImGui::MenuItem("WEB -> Github MathGeoLib"))
+                {
+                    ShellExecute(NULL, "open", "https://github.com/juj/MathGeoLib/commit/55053da5e3e55a83043af7324944407b174c3724", NULL, NULL, SW_SHOW);
+                }
+
             }
             //License
             if (ImGui::CollapsingHeader("License", ImGuiTreeNodeFlags_DefaultOpen))
             {
-                ImGui::NewLine();
                 ImGui::Text("License:"); ImGui::NewLine();
                 ImGui::TextWrapped("Copyright (c) 2023 Luxary"); ImGui::NewLine();
                 ImGui::TextWrapped("Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and /or sell copies of the Software, and to permit persons to whom the Software i furnished to do so, subject to the following conditions : ");
