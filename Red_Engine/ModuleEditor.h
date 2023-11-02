@@ -38,6 +38,13 @@ public:
 	bool fullscreen = false;
 	bool borderless = false;
 
+	bool wireframe = false;
+	bool depth_test = false;
+	bool cull_face = false;
+	bool color_material = false;
+	bool lighting = false;
+	bool texture_2d = false;
+
 };
 
 #endif //MODULE_EDITOR

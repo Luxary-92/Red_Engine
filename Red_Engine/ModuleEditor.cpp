@@ -203,20 +203,50 @@ void ModuleEditor::DrawEditor()
 
                 ImGui::BulletText("CPU -> %d", SDL_GetCPUCount());
                 ImGui::BulletText("RAM -> %.1fGb", SDL_GetSystemRAM() / 1000.f);
+
+                if (ImGui::Checkbox("Wireframe", &wireframe))
+                    (wireframe) ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+                ImGui::SameLine();
+
+                if (ImGui::Checkbox("Depth Test", &depth_test))
+                    (depth_test) ? glDisable(GL_DEPTH_TEST) : glEnable(GL_DEPTH_TEST);
+
+                if (ImGui::Checkbox("Cull Face", &cull_face))
+                    (cull_face) ? glDisable(GL_CULL_FACE) : glEnable(GL_CULL_FACE);
+
+                ImGui::SameLine();
+
+                if (ImGui::Checkbox("Color Material", &color_material))
+                    (color_material) ? glDisable(GL_COLOR_MATERIAL) : glEnable(GL_COLOR_MATERIAL);
+
+                if (ImGui::Checkbox("Lighting", &lighting))
+                    (lighting) ? glDisable(GL_LIGHTING) : glEnable(GL_LIGHTING);
+
+                ImGui::SameLine();
+
+                if (ImGui::Checkbox("Texture 2D", &texture_2d))
+                    (texture_2d) ? glDisable(GL_TEXTURE_2D) : glEnable(GL_TEXTURE_2D);
+
             }
             if (ImGui::CollapsingHeader("Window", ImGuiTreeNodeFlags_DefaultOpen))
             {
                 ImGui::Text("Screen Width"); ImGui::NewLine();
+                ImGui::SameLine();
                 ImGui::SliderInt(" ", &screen_width, 640, 1920);
+
                 ImGui::Text("Screen Height"); ImGui::NewLine();
+                ImGui::SameLine();
                 ImGui::SliderInt(" ", &screen_height, 480, 1080);
                 if (ImGui::Checkbox("FullScreen", &fullscreen));
+                ImGui::SameLine();
                 if (ImGui::Checkbox("Borderless", &borderless));
 
                 if (ImGui::Button("[APPLY]")) {
 
                     App->window->SettingsScreen(screen_width, screen_height, fullscreen, borderless);
                 }
+                ImGui::SameLine();
                 if (ImGui::Button("[DEFAULT]")) {
 
                     App->window->SettingsScreen(1280, 800, false, false);
@@ -237,7 +267,7 @@ void ModuleEditor::DrawEditor()
         ImGui::Begin("Hierarchy", &HierarchyState, ImGuiWindowFlags_MenuBar); {
 
             ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window "); ImGui::NewLine();
-
+            
             ImGui::End();
         }
     }
