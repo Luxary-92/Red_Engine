@@ -28,6 +28,8 @@ public:
 
 	void OnResize(int width, int height);
 
+	void cube();
+
 public:
 
 	GLuint VBO, EBO, VAO;

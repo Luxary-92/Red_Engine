@@ -218,9 +218,9 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//glBindVertexArray(VAO);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
-	//drawcube
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, CubeVertices);
+	////drawcube
+	//glEnableClientState(GL_VERTEX_ARRAY);
+	//glVertexPointer(3, GL_FLOAT, 0, CubeVertices);
 
 
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, NULL);
@@ -277,4 +277,10 @@ void ModuleRenderer3D::OnResize(int width, int height)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+}
+
+void ModuleRenderer3D::cube() {
+	//drawcube
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, CubeVertices);
 }

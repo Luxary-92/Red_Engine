@@ -58,6 +58,8 @@ void ModuleEditor::DrawEditor()
         if (ImGui::BeginMenu("GameObjects"))
         {
             if (ImGui::MenuItem("Cube")) {
+                //drawcube
+                App->renderer3D->cube();
             }
             ImGui::EndMenu();
         }
