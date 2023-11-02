@@ -230,7 +230,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	App->editor->DrawEditor();
 	
-	//printar
+	//printar meshes
 	for (int i = 0; i < App->mesh->meshes.size(); i++)
 	{
 		App->mesh->meshes[i]->DrawMesh();
