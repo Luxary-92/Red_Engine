@@ -79,33 +79,75 @@ void ModuleEditor::DrawEditor()
         }
         if (ImGui::BeginMenu("About"))
         {
-            ImGui::Text("Red Engine");ImGui::NewLine();
+            ImGui::Text("Red Engine"); ImGui::NewLine();
 
-            ImGui::Text("Engine created for the subject of VideoGame Engines Created by : ");
+            if (ImGui::CollapsingHeader("Project Info", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::Text("Engine created for the subject of VideoGame Engines Created by : ");
 
-            ImGui::NewLine();
-            if (ImGui::MenuItem("Nixon Daniel Correa Albarracin")) {
-                ShellExecute(0, 0, "https://github.com/Nixonbit3", 0, 0, SW_SHOW);
-            }
-            ImGui::Text("&");
-            if (ImGui::MenuItem("Enric Arxer Cortes")) {
-                ShellExecute(0, 0, "https://github.com/Luxary-92", 0, 0, SW_SHOW);
-            }
-            if (ImGui::MenuItem("Github page : https://github.com/Luxary-92/Red_Engine")) {
-                ShellExecute(0, 0, "https://github.com/Luxary-92/Red_Engine", 0, 0, SW_SHOW);
+                ImGui::NewLine();
+                if (ImGui::MenuItem("Nixon Daniel Correa Albarracin")) {
+                    ShellExecute(0, 0, "https://github.com/Nixonbit3", 0, 0, SW_SHOW);
+                }
+                ImGui::Text("&");
+                if (ImGui::MenuItem("Enric Arxer Cortes")) {
+                    ShellExecute(0, 0, "https://github.com/Luxary-92", 0, 0, SW_SHOW);
+                }
+                if (ImGui::MenuItem("Github page : https://github.com/Luxary-92/Red_Engine")) {
+                    ShellExecute(0, 0, "https://github.com/Luxary-92/Red_Engine", 0, 0, SW_SHOW);
+                }
             }
 
+            if (ImGui::CollapsingHeader("3r Party Libraries", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                //Sdl
+                ImGui::NewLine();
+                SDL_version version;
+                SDL_GetVersion(&version);
+                ImGui::Text("Using SDL %i.%i.%i", version.major, version.minor, version.patch);
+                if (ImGui::MenuItem("Libsdl.org"))
+                {
+                    ShellExecute(NULL, "open", "https://www.libsdl.org/", NULL, NULL, SW_SHOW);
+                }
+                //ImGui
+                ImGui::NewLine();
+                const char* version_gui = ImGui::GetVersion();
+                ImGui::Text("Using ImGui %s", version_gui);
+                if (ImGui::MenuItem("Github ImGui"))
+                {
+                    ShellExecute(NULL, "open", "https://github.com/ocornut/imgui", NULL, NULL, SW_SHOW);
+                }
+                //OpenGl
+                ImGui::NewLine();
+                ImGui::Text("OpenGL version supported %s", glGetString(GL_VERSION));
+                ImGui::Text("Vendor: %s", glGetString(GL_VENDOR));
+                ImGui::Text("Renderer: %s", glGetString(GL_RENDERER));
+                ImGui::Text("GLSL: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
+                if (ImGui::MenuItem("Opengl.org"))
+                {
+                    ShellExecute(NULL, "open", "https://www.opengl.org/", NULL, NULL, SW_SHOW);
+                }
+                //Glew
+                ImGui::NewLine();
+                ImGui::Text("Using Glew %s", glewGetString(GLEW_VERSION));
+                if (ImGui::MenuItem("Glew.sourceforge.net"))
+                {
+                    ShellExecute(NULL, "open", "https://glew.sourceforge.net/", NULL, NULL, SW_SHOW);
+                }
+            }
             //License
-
-            ImGui::NewLine();
-            ImGui::Text("License:");ImGui::NewLine();
-            ImGui::TextWrapped("Copyright (c) 2023 Luxary"); ImGui::NewLine();
-            ImGui::TextWrapped("Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and /or sell copies of the Software, and to permit persons to whom the Software i furnished to do so, subject to the following conditions : "); 
-            ImGui::NewLine();
-            ImGui::TextWrapped("The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."); 
-            ImGui::NewLine();
-            ImGui::TextWrapped("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."); 
-            ImGui::NewLine();
+            if (ImGui::CollapsingHeader("License", ImGuiTreeNodeFlags_DefaultOpen))
+            {
+                ImGui::NewLine();
+                ImGui::Text("License:"); ImGui::NewLine();
+                ImGui::TextWrapped("Copyright (c) 2023 Luxary"); ImGui::NewLine();
+                ImGui::TextWrapped("Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and /or sell copies of the Software, and to permit persons to whom the Software i furnished to do so, subject to the following conditions : ");
+                ImGui::NewLine();
+                ImGui::TextWrapped("The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.");
+                ImGui::NewLine();
+                ImGui::TextWrapped("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
+                ImGui::NewLine();
+            }
 
             ImGui::EndMenu();
         }
