@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "Light.h"
+#include "ModuleMesh.h"
 
 #include "MathGeoLib/include/Math/float3x3.h"
 #include "MathGeoLib/include/Math/float4x4.h"
@@ -35,6 +36,7 @@ public:
 	SDL_GLContext context;
 	CPlane Grid;
 
+	
 
 	//You won't need this after using Frustum
 	mat4x4 ProjectionMatrix;
