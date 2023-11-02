@@ -7,7 +7,6 @@ Application::Application()
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
 	mesh = new ModuleMesh(this);
-	moduleTexture = new ModuleTexture(this);
 	editor = new ModuleEditor(this);
 
 	// The order of calls is very important!
@@ -19,7 +18,6 @@ Application::Application()
 	AddModule(camera);
 	AddModule(input);
 	AddModule(mesh);
-	AddModule(moduleTexture);
 
 	// Renderer last!
 	AddModule(renderer3D);

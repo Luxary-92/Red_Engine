@@ -4,8 +4,6 @@
 #include "SDL\include\SDL_opengl.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
-#include "ModuleTexture.h"
-
 
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment (lib, "glu32.lib") /* link Microsoft OpenGL lib   */
@@ -174,8 +172,6 @@ bool ModuleRenderer3D::Init()
 	//ImGui_ImplOpenGL3_Init("#version 130");
 	
 	App->mesh->LoadFile("Assets/BakerHouse.fbx");
-	textureID = App->moduleTexture->LoadTexture("Assets/Baker_house.png");
-
 
 	return ret;
 }
@@ -232,21 +228,13 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	// deactivate vertex arrays after drawing (ask teacher)
 	//glDisableClientState(GL_VERTEX_ARRAY);
 
-
-	// Activa la textura
-	glEnable(GL_TEXTURE_2D);
-	// Enlaza la textura
-	glBindTexture(GL_TEXTURE_2D, textureID);
+	
 	
 	//printar meshes
 	for (int i = 0; i < App->mesh->meshes.size(); i++)
 	{
 		App->mesh->meshes[i]->DrawMesh();
 	}
-
-	// Desactiva la textura
-	glDisable(GL_TEXTURE_2D);
-
 	
 	App->editor->DrawEditor();
 	SDL_GL_SwapWindow(App->window->window);
