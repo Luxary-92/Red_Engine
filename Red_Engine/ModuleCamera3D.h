@@ -31,6 +31,8 @@ public:
 	//You won't need this after using Frustum
 	float3 X, Y, Z, Position, Reference;
 
+	float speed;
+
 private:
 
 	mat4x4 ViewMatrix;

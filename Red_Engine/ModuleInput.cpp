@@ -127,15 +127,14 @@ update_status ModuleInput::PreUpdate(float dt)
 			break;
 		}
 		}
-
-		if (quit == true || keyboard[SDL_SCANCODE_ESCAPE] == KEY_UP || App->AppClose == true) {
-
-			return UPDATE_STOP;
-		}
-
-
-		return UPDATE_CONTINUE;
 	}
+	if (quit == true || keyboard[SDL_SCANCODE_ESCAPE] == KEY_UP || App->AppClose == true) {
+
+		return UPDATE_STOP;
+	}
+
+
+	return UPDATE_CONTINUE;
 }
 
 // Called before quitting

@@ -93,6 +93,7 @@ void ModuleEditor::DrawEditor()
                 if (ImGui::MenuItem("Enric Arxer Cortes")) {
                     ShellExecute(0, 0, "https://github.com/Luxary-92", 0, 0, SW_SHOW);
                 }
+                ImGui::NewLine();
                 if (ImGui::MenuItem("Github page : https://github.com/Luxary-92/Red_Engine")) {
                     ShellExecute(0, 0, "https://github.com/Luxary-92/Red_Engine", 0, 0, SW_SHOW);
                 }
@@ -121,7 +122,7 @@ void ModuleEditor::DrawEditor()
                 ImGui::NewLine();
                 ImGui::BulletText("OpenGL %s", glGetString(GL_VERSION));
                 ImGui::BulletText("Vendor: %s", glGetString(GL_VENDOR));
-                ImGui::BulletText("Renderer: %s", glGetString(GL_RENDERER));
+                ImGui::BulletText("Vendor: %s", glGetString(GL_VENDOR));
                 ImGui::BulletText("GLSL: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
                 if (ImGui::MenuItem("WEB -> Opengl.org"))
                 {
@@ -212,14 +213,15 @@ void ModuleEditor::DrawEditor()
             }
             if (ImGui::CollapsingHeader("Input", ImGuiTreeNodeFlags_DefaultOpen))
             {
-                ImGui::TextWrapped(""); ImGui::NewLine();
+                ImGui::TextWrapped("Camera Rotation Speed");
+                ImGui::TextWrapped("Camera Movement Speed");
             }
             if (ImGui::CollapsingHeader("Textures", ImGuiTreeNodeFlags_DefaultOpen))
             {
                 ImGui::TextWrapped(""); ImGui::NewLine();
             }
 
-            if (ImGui::CollapsingHeader("3", ImGuiTreeNodeFlags_DefaultOpen))
+            if (ImGui::CollapsingHeader("Rendering", ImGuiTreeNodeFlags_DefaultOpen))
             {
                 ImGui::NewLine();
                 ImGui::TextWrapped("Information output of memory consumption, hardware detection and software versions(SDL, OpenGL, DevIL)."); ImGui::NewLine();
