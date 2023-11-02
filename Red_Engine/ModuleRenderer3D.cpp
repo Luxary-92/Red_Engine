@@ -228,7 +228,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	// deactivate vertex arrays after drawing (ask teacher)
 	//glDisableClientState(GL_VERTEX_ARRAY);
 
-	App->editor->DrawEditor();
+	
 	
 	//printar meshes
 	for (int i = 0; i < App->mesh->meshes.size(); i++)
@@ -236,7 +236,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 		App->mesh->meshes[i]->DrawMesh();
 	}
 	
-
+	App->editor->DrawEditor();
 	SDL_GL_SwapWindow(App->window->window);
 
 	return UPDATE_CONTINUE;
