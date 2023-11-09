@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
+#include "ModuleTexture.h"
 #include "SDL\include\SDL_opengl.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
@@ -172,6 +173,7 @@ bool ModuleRenderer3D::Init()
 	//ImGui_ImplOpenGL3_Init("#version 130");
 	
 	App->mesh->LoadFile("Assets/BakerHouse.fbx");
+	textureID = App->texture->LoadTexture("Assets/Baker_house.png");
 
 	return ret;
 }
@@ -228,14 +230,15 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	// deactivate vertex arrays after drawing (ask teacher)
 	//glDisableClientState(GL_VERTEX_ARRAY);
 
-	
-	
+	//texture
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textureID);
 	//printar meshes
 	for (int i = 0; i < App->mesh->meshes.size(); i++)
 	{
 		App->mesh->meshes[i]->DrawMesh();
 	}
-	
+	glDisable(GL_TEXTURE_2D);
 	App->editor->DrawEditor();
 	SDL_GL_SwapWindow(App->window->window);
 

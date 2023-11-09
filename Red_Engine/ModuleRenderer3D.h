@@ -37,7 +37,7 @@ public:
 	Light lights[MAX_LIGHTS];
 	SDL_GLContext context;
 	CPlane Grid;
-
+	GLuint textureID;
 	
 
 	//You won't need this after using Frustum
