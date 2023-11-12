@@ -22,6 +22,7 @@ struct MeshData {
     uint vertexID = 0;
     uint numVertex = 0;
     float* vertex = nullptr;
+    float* textureCoords;
     void DrawMesh();
 };
 
@@ -44,6 +45,7 @@ public:
     void DrawMesh();
 
     bool CleanUp();
+
 };
 
 #endif // ModuleMesh

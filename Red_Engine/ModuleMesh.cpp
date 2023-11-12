@@ -57,8 +57,10 @@ void ModuleMesh::LoadFile(std::string Path)
 
             mesh->numVertex = scene->mMeshes[i]->mNumVertices;
             mesh->vertex = new float[mesh->numVertex * 3];
+            mesh->textureCoords = new float[mesh->numVertex * 2]; // Asumiendo 2 coordenadas por vértice
 
             memcpy(mesh->vertex, scene->mMeshes[i]->mVertices, sizeof(float) * mesh->numVertex * 3);
+            memcpy(mesh->textureCoords, scene->mMeshes[i]->mTextureCoords[0], sizeof(float) * mesh->numVertex * 2); // Asignación de las coordenadas de textura
 
             if (scene->mMeshes[i]->HasFaces())
             {
@@ -98,6 +100,7 @@ void MeshData::DrawMesh()
     for (int i = 0; i < numIndex; i++)
     {
         glVertex3f(vertex[index[i] * 3], vertex[index[i] * 3 + 1], vertex[index[i] * 3 + 2]);
+        glTexCoord2f(textureCoords[index[i] * 2], textureCoords[index[i] * 2 + 1]); // Asignación de las coordenadas de textura
     }
     glEnd();
 }
@@ -107,3 +110,4 @@ bool ModuleMesh::CleanUp()
     aiDetachAllLogStreams();
     return true;
 }
+
