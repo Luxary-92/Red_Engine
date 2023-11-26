@@ -49,6 +49,9 @@ update_status ModuleMesh::PostUpdate(float dt)
 void ModuleMesh::LoadFile(std::string Path)
 {
     const aiScene* scene = aiImportFile(Path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
+
+    
+
     if (scene != nullptr && scene->HasMeshes())
     {
         for (int i = 0; i < scene->mNumMeshes; i++)
@@ -57,7 +60,11 @@ void ModuleMesh::LoadFile(std::string Path)
 
             mesh->numVertex = scene->mMeshes[i]->mNumVertices;
             mesh->vertex = new float[mesh->numVertex * 3];
-            mesh->textureCoords = new float[mesh->numVertex * 2]; // Asumiendo 2 coordenadas por vértice
+
+            mesh->textureCoords = new float[mesh->numVertex * 2]; 
+            mesh->textureWidth = App->texture->width ;
+            mesh->textureHeight = App->texture->height ;
+
 
             memcpy(mesh->vertex, scene->mMeshes[i]->mVertices, sizeof(float) * mesh->numVertex * 3);
             memcpy(mesh->textureCoords, scene->mMeshes[i]->mTextureCoords[0], sizeof(float) * mesh->numVertex * 2); // Asignación de las coordenadas de textura
@@ -93,17 +100,18 @@ void ModuleMesh::DrawMesh()
     }
 }
 
-void MeshData::DrawMesh()
-{
+void MeshData::DrawMesh() {
     glBegin(GL_TRIANGLES);
 
-    for (int i = 0; i < numIndex; i++)
-    {
+    for (int i = 0; i < numIndex; i++) {
+        glTexCoord2f(textureCoords[index[i] * 2], textureCoords[index[i] * 2 + 1]);
         glVertex3f(vertex[index[i] * 3], vertex[index[i] * 3 + 1], vertex[index[i] * 3 + 2]);
-        glTexCoord2f(textureCoords[index[i] * 2], textureCoords[index[i] * 2 + 1]); // Asignación de las coordenadas de textura
     }
+
     glEnd();
 }
+
+
 
 bool ModuleMesh::CleanUp()
 {

@@ -171,9 +171,13 @@ bool ModuleRenderer3D::Init()
 	//// Setup Platform/Renderer backends
 	//ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
 	//ImGui_ImplOpenGL3_Init("#version 130");
-	
+	//textureID = App->texture->LoadTexture("Assets/Baker_house.png");
+	textureID = App->texture->LoadCheckerTexture(); // checker
+
 	App->mesh->LoadFile("Assets/BakerHouse.fbx");
-	textureID = App->texture->LoadTexture("Assets/Baker_house.png");
+	
+
+	
 
 	return ret;
 }

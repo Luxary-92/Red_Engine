@@ -24,6 +24,9 @@ struct MeshData {
     float* vertex = nullptr;
     float* textureCoords;
     void DrawMesh();
+    float textureWidth; // Ancho de la textura
+    float textureHeight; // Alto de la textura
+
 };
 
 class ModuleMesh : public Module
