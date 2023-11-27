@@ -9,6 +9,7 @@
 
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
+    logs = new std::deque<std::string>();
 }
         
 ModuleEditor::~ModuleEditor()
@@ -79,6 +80,7 @@ void ModuleEditor::DrawEditor()
             }
             ImGui::EndMenu();
         }
+
         if (ImGui::BeginMenu("About"))
         {
             ImGui::Text("Red Engine"); ImGui::NewLine();
@@ -167,139 +169,13 @@ void ModuleEditor::DrawEditor()
         ImGui::EndMainMenuBar();
     }
     //Consloe
-    if (ConsoleState) {
-        ImGui::Begin("Console", &ConsoleState, ImGuiWindowFlags_MenuBar); {
-
-            ImGui::TextWrapped("The window should LOG the geometry loading process from ASSIMP and the external libraries initialization process");
-            ImGui::End();
-        }
-    }
-
+    ConsoleWindow(ConsoleState);
     //Configuration
-    if (ConfigState){
-        ImGui::Begin("Configuration", &ConfigState, ImGuiWindowFlags_MenuBar); {
-
-            //Frames and miliseconds
-            frames = App->GetFR();
-            AddFPS(frames);
-            milisecods = App->GetDT();
-            AddMS(milisecods);
-
-            if (ImGui::CollapsingHeader("Framerate", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::PlotHistogram("", framesLog.data(), framesLog.size(), 0, "FPS", 0.0f, 100.0f, ImVec2(200, 100));
-                ImGui::PlotHistogram("", milisecodsLog.data(), milisecodsLog.size(), 0, "Miliseconds", 0.0f, 0.03f, ImVec2(200, 100));
-            }
-            if (ImGui::CollapsingHeader("Renderer", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                SDL_version version;
-                SDL_GetVersion(&version);
-                ImGui::BulletText("SDL %i.%i.%i", version.major, version.minor, version.patch);
-
-                const char* version_gui = ImGui::GetVersion();
-                ImGui::BulletText("ImGui %s", version_gui);
-
-                ImGui::BulletText("OpenGL %s", glGetString(GL_VERSION));
-                ImGui::BulletText("GPU-> %s", glGetString(GL_VENDOR));
-                ImGui::BulletText("Brand-> %s", glGetString(GL_RENDERER));
-
-                ImGui::BulletText("CPU -> %d", SDL_GetCPUCount());
-                ImGui::BulletText("RAM -> %.1fGb", SDL_GetSystemRAM() / 1000.f);
-
-                if (ImGui::Checkbox("Wireframe", &wireframe))
-                    (wireframe) ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-                ImGui::SameLine();
-
-                if (ImGui::Checkbox("Depth Test", &depth_test))
-                    (depth_test) ? glDisable(GL_DEPTH_TEST) : glEnable(GL_DEPTH_TEST);
-
-                if (ImGui::Checkbox("Cull Face", &cull_face))
-                    (cull_face) ? glDisable(GL_CULL_FACE) : glEnable(GL_CULL_FACE);
-
-                ImGui::SameLine();
-
-                if (ImGui::Checkbox("Color Material", &color_material))
-                    (color_material) ? glDisable(GL_COLOR_MATERIAL) : glEnable(GL_COLOR_MATERIAL);
-
-                if (ImGui::Checkbox("Lighting", &lighting))
-                    (lighting) ? glDisable(GL_LIGHTING) : glEnable(GL_LIGHTING);
-
-                ImGui::SameLine();
-
-                if (ImGui::Checkbox("Texture 2D", &texture_2d))
-                    (texture_2d) ? glDisable(GL_TEXTURE_2D) : glEnable(GL_TEXTURE_2D);
-
-            }
-            if (ImGui::CollapsingHeader("Window", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::Text("Screen Width"); ImGui::NewLine();
-                ImGui::SameLine();
-                ImGui::SliderInt(" ", &screen_width, 640, 1920);
-
-                ImGui::Text("Screen Height"); ImGui::NewLine();
-                ImGui::SameLine();
-                ImGui::SliderInt(" ", &screen_height, 480, 1080);
-                if (ImGui::Checkbox("FullScreen", &fullscreen));
-                ImGui::SameLine();
-                if (ImGui::Checkbox("Borderless", &borderless));
-
-                if (ImGui::Button("[APPLY]")) {
-
-                    App->window->SettingsScreen(screen_width, screen_height, fullscreen, borderless);
-                }
-                ImGui::SameLine();
-                if (ImGui::Button("[DEFAULT]")) {
-
-                    App->window->SettingsScreen(1280, 800, false, false);
-                }
-            }
-            if (ImGui::CollapsingHeader("Input", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::TextWrapped("Camera Rotation Speed");
-                ImGui::TextWrapped("Camera Movement Speed");
-            }
-
-            ImGui::End();
-        }
-    }
-
+    ConfigurationWindow(ConfigState);
     //Hierarchy
-    if (HierarchyState) {
-        ImGui::Begin("Hierarchy", &HierarchyState, ImGuiWindowFlags_MenuBar); {
-
-            ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window "); ImGui::NewLine();
-            
-            ImGui::End();
-        }
-    }
-
+    HierarchyWindow(HierarchyState);
     //Inspector
-    if (InspectorState) {
-        ImGui::Begin("Inspector", &InspectorState, ImGuiWindowFlags_MenuBar); {
-
-            if (ImGui::CollapsingHeader("Components of the selected GameObject", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::NewLine();
-                ImGui::Text("Position: ");ImGui::NewLine();
-                ImGui::Text("Rotation: "); ImGui::NewLine();
-                ImGui::Text("Scale: "); ImGui::NewLine();
-                ImGui::TextWrapped("Transform: only for display purposes. Show position, rotation and scale for the selected GameObject."); ImGui::NewLine();
-            }
-            if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::NewLine();
-                ImGui::TextWrapped("Information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face)."); ImGui::NewLine();
-            }
-            if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
-            {
-                ImGui::NewLine();
-                ImGui::TextWrapped("Display texture size and path.There should be an option to view the selected GameObject with the checkers texture."); ImGui::NewLine();
-            }
-
-            ImGui::End();
-        }
-    }
+    InspectorWindow(InspectorState);
 
     //ImGui::ShowDemoWindow();
     ImGui::Render();
@@ -353,3 +229,152 @@ void ModuleEditor::AddMS(const float aDT)
         milisecodsLog[milisecodsLog.size() - 1] = aDT;
     }
 }
+
+
+//Consloe
+void ModuleEditor::ConsoleWindow(bool& State)
+{
+    ImGui::SetNextWindowSize(ImVec2(920, 300), ImGuiCond_FirstUseEver);
+    ImGui::Begin("Console", &ConsoleState, ImGuiWindowFlags_MenuBar); {
+
+        ImGui::TextWrapped("The window should LOG the geometry loading process from ASSIMP and the external libraries initialization process");
+        ImGui::End();
+    }
+
+}
+
+//Configuration
+void ModuleEditor::ConfigurationWindow(bool& State)
+{
+    ImGui::Begin("Configuration", &ConfigState, ImGuiWindowFlags_MenuBar); {
+
+        //Frames and miliseconds
+        frames = App->GetFR();
+        AddFPS(frames);
+        milisecods = App->GetDT();
+        AddMS(milisecods);
+
+        if (ImGui::CollapsingHeader("Framerate", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            ImGui::PlotHistogram("", framesLog.data(), framesLog.size(), 0, "FPS", 0.0f, 100.0f, ImVec2(200, 100));
+            ImGui::PlotHistogram("", milisecodsLog.data(), milisecodsLog.size(), 0, "Miliseconds", 0.0f, 0.03f, ImVec2(200, 100));
+        }
+        if (ImGui::CollapsingHeader("Renderer", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            SDL_version version;
+            SDL_GetVersion(&version);
+            ImGui::BulletText("SDL %i.%i.%i", version.major, version.minor, version.patch);
+
+            const char* version_gui = ImGui::GetVersion();
+            ImGui::BulletText("ImGui %s", version_gui);
+
+            ImGui::BulletText("OpenGL %s", glGetString(GL_VERSION));
+            ImGui::BulletText("GPU-> %s", glGetString(GL_VENDOR));
+            ImGui::BulletText("Brand-> %s", glGetString(GL_RENDERER));
+
+            ImGui::BulletText("CPU -> %d", SDL_GetCPUCount());
+            ImGui::BulletText("RAM -> %.1fGb", SDL_GetSystemRAM() / 1000.f);
+
+            if (ImGui::Checkbox("Wireframe", &wireframe))
+                (wireframe) ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+            ImGui::SameLine();
+
+            if (ImGui::Checkbox("Depth Test", &depth_test))
+                (depth_test) ? glDisable(GL_DEPTH_TEST) : glEnable(GL_DEPTH_TEST);
+
+            if (ImGui::Checkbox("Cull Face", &cull_face))
+                (cull_face) ? glDisable(GL_CULL_FACE) : glEnable(GL_CULL_FACE);
+
+            ImGui::SameLine();
+
+            if (ImGui::Checkbox("Color Material", &color_material))
+                (color_material) ? glDisable(GL_COLOR_MATERIAL) : glEnable(GL_COLOR_MATERIAL);
+
+            if (ImGui::Checkbox("Lighting", &lighting))
+                (lighting) ? glDisable(GL_LIGHTING) : glEnable(GL_LIGHTING);
+
+            ImGui::SameLine();
+
+            if (ImGui::Checkbox("Texture 2D", &texture_2d))
+                (texture_2d) ? glDisable(GL_TEXTURE_2D) : glEnable(GL_TEXTURE_2D);
+
+        }
+        if (ImGui::CollapsingHeader("Window", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            ImGui::Text("Screen Width"); ImGui::NewLine();
+            ImGui::SameLine();
+            ImGui::SliderInt(" ", &screen_width, 640, 1920);
+
+            ImGui::Text("Screen Height"); ImGui::NewLine();
+            ImGui::SameLine();
+            ImGui::SliderInt(" ", &screen_height, 480, 1080);
+            if (ImGui::Checkbox("FullScreen", &fullscreen));
+            ImGui::SameLine();
+            if (ImGui::Checkbox("Borderless", &borderless));
+
+            if (ImGui::Button("[APPLY]")) {
+
+                App->window->SettingsScreen(screen_width, screen_height, fullscreen, borderless);
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("[DEFAULT]")) {
+
+                App->window->SettingsScreen(1280, 800, false, false);
+            }
+        }
+        if (ImGui::CollapsingHeader("Input", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            ImGui::TextWrapped("Camera Rotation Speed");
+            ImGui::TextWrapped("Camera Movement Speed");
+        }
+
+        ImGui::End();
+    
+    }
+
+}
+
+//Hierarchy
+void ModuleEditor::HierarchyWindow(bool& State)
+{
+    ImGui::Begin("Hierarchy", &HierarchyState, ImGuiWindowFlags_MenuBar); {
+
+        ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window "); ImGui::NewLine();
+
+        ImGui::End();
+    }
+
+}
+
+
+//Inspector
+void ModuleEditor::InspectorWindow(bool& State)
+{
+    ImGui::Begin("Inspector", &InspectorState, ImGuiWindowFlags_MenuBar); {
+
+        if (ImGui::CollapsingHeader("Components of the selected GameObject", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            ImGui::NewLine();
+            ImGui::Text("Position: "); ImGui::NewLine();
+            ImGui::Text("Rotation: "); ImGui::NewLine();
+            ImGui::Text("Scale: "); ImGui::NewLine();
+            ImGui::TextWrapped("Transform: only for display purposes. Show position, rotation and scale for the selected GameObject."); ImGui::NewLine();
+        }
+        if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            ImGui::NewLine();
+            ImGui::TextWrapped("Information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face)."); ImGui::NewLine();
+        }
+        if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            ImGui::NewLine();
+            ImGui::TextWrapped("Display texture size and path.There should be an option to view the selected GameObject with the checkers texture."); ImGui::NewLine();
+        }
+
+        ImGui::End();
+    }
+
+
+}
+

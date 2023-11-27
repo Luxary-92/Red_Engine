@@ -6,9 +6,17 @@
 
 #include <vector>
 #include <string>
+#include <deque>
 
 class ModuleEditor : public Module
 {
+private:
+
+	void ConsoleWindow(bool& State);
+	void ConfigurationWindow(bool& State);
+	void HierarchyWindow(bool& State);
+	void InspectorWindow(bool& State);
+
 public:
 
 	ModuleEditor(Application* app, bool start_enabled = true);
@@ -45,6 +53,7 @@ public:
 	bool lighting = false;
 	bool texture_2d = false;
 
+	std::deque<std::string>* logs = nullptr;
 };
 
 #endif //MODULE_EDITOR
