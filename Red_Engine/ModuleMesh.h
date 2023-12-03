@@ -4,6 +4,7 @@
 #include "Assimp/include/cimport.h"
 #include "Assimp/include/scene.h"
 #include "Assimp/include/postprocess.h"
+#include "Assimp/include/Importer.hpp"
 
 #include "Module.h"
 #include "Globals.h"
@@ -11,45 +12,30 @@
 #include "ModuleRenderer3D.h"
 
 #include <vector>
-using namespace std;
 
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
 
 struct MeshData {
-    uint indexID = 0;
-    uint numIndex = 0;
-    uint* index = nullptr;
-    uint vertexID = 0;
-    uint numVertex = 0;
-    float* vertex = nullptr;
-    float* textureCoords;
-    void DrawMesh();
-    float textureWidth; // Ancho de la textura
-    float textureHeight; // Alto de la textura
-
+    std::vector<float> vertices;
+    std::vector<unsigned int> indices;
+    std::vector<float> textureCoords;
 };
 
-class ModuleMesh : public Module
-{
+class ModuleMesh : public Module {
 public:
     ModuleMesh(Application* app, bool start_enabled = true);
     ~ModuleMesh();
 
-    vector<MeshData*> meshes;
-    string pathFile;
-
-    bool Start();
-
-    update_status PreUpdate(float dt);
-    update_status Update(float dt);
-    update_status PostUpdate(float dt);
-
-    void LoadFile(string Path);
+    bool Init() override;
+    bool CleanUp() override;
+    bool LoadFBX(const char* path);
     void DrawMesh();
 
-    bool CleanUp();
+private:
+    std::vector<MeshData> meshes;
 
 };
+
 
 #endif // ModuleMesh
 

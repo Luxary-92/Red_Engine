@@ -94,3 +94,9 @@ GLuint ModuleTexture::LoadCheckerTexture()
 
     return textureID;
 }
+
+
+GLuint ModuleTexture::GetTextureID() 
+{
+    return textureID;
+}

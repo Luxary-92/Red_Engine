@@ -121,7 +121,7 @@ update_status ModuleInput::PreUpdate(float dt)
 			// In case if dropped file
 			dropped_filedir = e.drop.file;
 			// Shows directory of dropped file
-			App->mesh->LoadFile(dropped_filedir);
+			App->mesh->LoadFBX(dropped_filedir);
 			LOG("File dropped on window")
 				SDL_free(dropped_filedir);    // Free dropped_filedir memory
 			break;

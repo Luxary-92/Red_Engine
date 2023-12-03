@@ -7,115 +7,80 @@
 #include "ModuleRenderer3D.h"
 #include "Glew/include/glew.h"
 
-ModuleMesh::ModuleMesh(Application* app, bool start_enabled) : Module(app, start_enabled)
-{
-}
 
-ModuleMesh::~ModuleMesh()
-{
-}
+ModuleMesh::ModuleMesh(Application* app, bool start_enabled) : Module(app, start_enabled) {}
 
-bool ModuleMesh::Start()
-{
-    bool ret = true;
+ModuleMesh::~ModuleMesh() {}
 
-    struct aiLogStream stream;
-
-    stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr);
-    aiAttachLogStream(&stream);
-
-   
-
-    LoadFile(pathFile);
-
-    return ret;
-}
-
-update_status ModuleMesh::PreUpdate(float dt)
-{
-    return UPDATE_CONTINUE;
-}
-
-update_status ModuleMesh::Update(float dt)
-{
-    return UPDATE_CONTINUE;
-}
-
-update_status ModuleMesh::PostUpdate(float dt)
-{
-    return UPDATE_CONTINUE;
-}
-
-void ModuleMesh::LoadFile(std::string Path)
-{
-    const aiScene* scene = aiImportFile(Path.c_str(), aiProcessPreset_TargetRealtime_MaxQuality);
-
-    
-
-    if (scene != nullptr && scene->HasMeshes())
-    {
-        for (int i = 0; i < scene->mNumMeshes; i++)
-        {
-            MeshData* mesh = new MeshData();
-
-            mesh->numVertex = scene->mMeshes[i]->mNumVertices;
-            mesh->vertex = new float[mesh->numVertex * 3];
-
-            mesh->textureCoords = new float[mesh->numVertex * 2]; 
-            mesh->textureWidth = App->texture->width ;
-            mesh->textureHeight = App->texture->height ;
-
-
-            memcpy(mesh->vertex, scene->mMeshes[i]->mVertices, sizeof(float) * mesh->numVertex * 3);
-            memcpy(mesh->textureCoords, scene->mMeshes[i]->mTextureCoords[0], sizeof(float) * mesh->numVertex * 2); // Asignación de las coordenadas de textura
-
-            if (scene->mMeshes[i]->HasFaces())
-            {
-                mesh->numIndex = scene->mMeshes[i]->mNumFaces * 3;
-                mesh->index = new uint[mesh->numIndex];
-                for (uint j = 0; j < scene->mMeshes[i]->mNumFaces; j++)
-                {
-                    if (scene->mMeshes[i]->mFaces[j].mNumIndices != 3) {
-                        LOG("WARNING, geometry face with != 3 index!");
-                    }
-                    else
-                        memcpy(&mesh->index[j * 3], scene->mMeshes[i]->mFaces[j].mIndices, 3 * sizeof(uint));
-
-                }
-                meshes.push_back(mesh);
-            }
-            else
-                delete mesh;
-        }
-        aiReleaseImport(scene);
-    }
-    else
-        LOG("ERROR loading scene %s", Path);
-}
-
-void ModuleMesh::DrawMesh()
-{
-    for (int i = 0; i < meshes.size(); i++) {
-        meshes[i]->DrawMesh();
-    }
-}
-
-void MeshData::DrawMesh() {
-    glBegin(GL_TRIANGLES);
-
-    for (int i = 0; i < numIndex; i++) {
-        glTexCoord2f(textureCoords[index[i] * 2], textureCoords[index[i] * 2 + 1]);
-        glVertex3f(vertex[index[i] * 3], vertex[index[i] * 3 + 1], vertex[index[i] * 3 + 2]);
-    }
-
-    glEnd();
-}
-
-
-
-bool ModuleMesh::CleanUp()
-{
-    aiDetachAllLogStreams();
+bool ModuleMesh::Init() {
     return true;
 }
 
+bool ModuleMesh::CleanUp() {
+    meshes.clear();
+    return true;
+}
+
+bool ModuleMesh::LoadFBX(const char* path) {
+    Assimp::Importer importer;
+    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+
+    if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
+        // Error al cargar el archivo FBX
+        return false;
+    }
+
+    // 1 textura
+    aiString texturePath;
+    if (scene->mMaterials[0]->GetTextureCount(aiTextureType_DIFFUSE) > 0 &&
+        scene->mMaterials[0]->GetTexture(aiTextureType_DIFFUSE, 0, &texturePath) == AI_SUCCESS) {
+        std::string fullPath = std::string(path) + "/" + std::string(texturePath.C_Str());
+        App->texture->LoadTexture(fullPath.c_str()); // Cargar textura
+    }
+
+    // Procesar mallas
+    meshes.clear();
+    for (unsigned int i = 0; i < scene->mNumMeshes; ++i) {
+        MeshData mesh;
+        aiMesh* aiMesh = scene->mMeshes[i];
+
+        // Procesar vértices
+        for (unsigned int j = 0; j < aiMesh->mNumVertices; ++j) {
+            mesh.vertices.push_back(aiMesh->mVertices[j].x);
+            mesh.vertices.push_back(aiMesh->mVertices[j].y);
+            mesh.vertices.push_back(aiMesh->mVertices[j].z);
+
+            if (aiMesh->HasTextureCoords(0)) {
+                mesh.textureCoords.push_back(aiMesh->mTextureCoords[0][j].x);
+                mesh.textureCoords.push_back(aiMesh->mTextureCoords[0][j].y);
+            }
+        }
+
+        // Procesar índices
+        for (unsigned int j = 0; j < aiMesh->mNumFaces; ++j) {
+            aiFace face = aiMesh->mFaces[j];
+            for (unsigned int k = 0; k < face.mNumIndices; ++k) {
+                mesh.indices.push_back(face.mIndices[k]);
+            }
+        }
+
+        meshes.push_back(mesh);
+    }
+
+    return true;
+}
+
+void ModuleMesh::DrawMesh() {
+    glBindTexture(GL_TEXTURE_2D, App->texture->GetTextureID()); // Textura
+
+    for (const auto& mesh : meshes) {
+        glBegin(GL_TRIANGLES);
+
+        for (size_t i = 0; i < mesh.indices.size(); ++i) {
+            glTexCoord2f(mesh.textureCoords[i * 2], mesh.textureCoords[i * 2 + 1]);
+            glVertex3f(mesh.vertices[mesh.indices[i] * 3], mesh.vertices[mesh.indices[i] * 3 + 1], mesh.vertices[mesh.indices[i] * 3 + 2]);
+        }
+
+        glEnd();
+    }
+}

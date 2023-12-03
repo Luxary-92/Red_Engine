@@ -24,6 +24,7 @@ public:
     bool CleanUp() override;
     GLuint LoadTexture(const char* path);
     GLuint LoadCheckerTexture();
+    GLuint GetTextureID();
 
 
     GLuint textureID = 0;

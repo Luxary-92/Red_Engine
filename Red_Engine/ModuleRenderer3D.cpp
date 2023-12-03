@@ -171,10 +171,9 @@ bool ModuleRenderer3D::Init()
 	//// Setup Platform/Renderer backends
 	//ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
 	//ImGui_ImplOpenGL3_Init("#version 130");
-	//textureID = App->texture->LoadTexture("Assets/Baker_house.png");
-	textureID = App->texture->LoadCheckerTexture(); // checker
+	textureID = App->texture->LoadTexture("Assets/Baker_house.png");
 
-	App->mesh->LoadFile("Assets/BakerHouse.fbx");
+	App->mesh->LoadFBX("Assets/BakerHouse.fbx");
 	
 
 	
@@ -237,11 +236,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//texture
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	//printar meshes
-	for (int i = 0; i < App->mesh->meshes.size(); i++)
-	{
-		App->mesh->meshes[i]->DrawMesh();
-	}
+	App->mesh->DrawMesh();
 	glDisable(GL_TEXTURE_2D);
 	App->editor->DrawEditor();
 	SDL_GL_SwapWindow(App->window->window);
