@@ -316,7 +316,7 @@ void ModuleEditor::ConfigurationWindow(bool& State)
                 (color_material) ? glDisable(GL_COLOR_MATERIAL) : glEnable(GL_COLOR_MATERIAL);
 
             if (ImGui::Checkbox("Lighting", &lighting))
-                (lighting) ? glDisable(GL_LIGHTING) : glEnable(GL_LIGHTING);
+                (lighting) ? glEnable(GL_LIGHTING) : glDisable(GL_LIGHTING) ;
 
             ImGui::SameLine();
 
