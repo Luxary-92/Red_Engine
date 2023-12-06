@@ -14,4 +14,6 @@ public:
 	void Disable();
 
 	bool active;
+
+	GameObject* parent;
 };

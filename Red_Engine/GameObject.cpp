@@ -11,7 +11,7 @@ GameObject::GameObject()
 
 }
 
-bool GameObject::isActive() const
+bool GameObject::isActive()
 {
 	return active;
 }
@@ -27,8 +27,5 @@ void GameObject::Enable()
 void GameObject::Disable()
 {
 	active = false;
-	//for (size_t i = 0; i < children.size(); i++)
-	//{
-	//	children[i]->Disable();
-	//}
+
 }
