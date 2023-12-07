@@ -1,25 +1,23 @@
-#include "Application.h"
 #pragma once
 
+enum class ComponentType
+{
+	NONE,
+	TRANSFORM,
+	MESH,
+	MATERIAL,
+	CAMERA
+};
+
 class GameObject;
-
-
 
 class Component {
 
 public:
-
-	enum class ComponentType
-	{
-		NONE,
-		TRANSFORM,
-		MESH,
-		MATERIAL,
-	};
-	ComponentType type;
-
-	Component(GameObject* owner);
+	Component(GameObject* Owner);
 	virtual ~Component();
+
+	ComponentType type;
 
 	virtual void Enable();
 	virtual void Disable();

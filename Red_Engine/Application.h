@@ -10,6 +10,7 @@
 #include "ModuleEditor.h"
 #include "ModuleTexture.h"
 #include "ModuleMesh.h"
+#include "GameObject.h"
 
 #include<vector>
 

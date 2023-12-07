@@ -1,10 +1,10 @@
 #include "Component.h"
 
-Component::Component(GameObject* owner)
+Component::Component(GameObject* Owner)
 {
 	type = ComponentType::NONE;
 	Active = false;
-	this->Object = owner;
+	this->Object = Owner;
 }
 
 Component::~Component(){}

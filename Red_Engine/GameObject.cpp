@@ -6,10 +6,22 @@
 #include "Comp_Mesh.h"
 #include "Comp_Material.h"
 
-GameObject::GameObject(std::string name, GameObject* parent): active(true), destroy(false), parent(nullptr)
+GameObject::GameObject() 
 {
-	if (parent != nullptr)
-		parent->Children.push_back(this);
+	Object_Name = "GameObject";
+	parent = nullptr;
+	destroy = false;
+
+}
+
+GameObject::GameObject(GameObject* Object_parent)
+{
+	Object_Name = "GameObject";
+	this->parent = Object_parent;
+	destroy = false;
+
+	if (Object_parent != nullptr)
+		Object_parent->Children.push_back(this);
 }
 
 const std::vector<GameObject*>& GameObject::GetChildren() const {
@@ -47,13 +59,16 @@ void GameObject::Disable()
 //GameObject Componets
 Comp_Material* GameObject::Get_Comp_Material() {
 
+	return nullptr;
 }
 
 Comp_Mesh* GameObject::Get_Comp_Mesh() {
 
+	return nullptr;
 }
 
 Comp_Transform* GameObject::Get_Comp_Transform() {
 
+	return nullptr;
 }
 

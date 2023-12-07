@@ -1,4 +1,3 @@
-#include "Application.h"
 #include "Component.h"
 #include "Module.h"
 #pragma once
@@ -14,7 +13,8 @@ class GameObject
 {
 public:
 
-	GameObject(std::string Object_Name,GameObject* parent);
+	GameObject();
+	GameObject(GameObject* Object_parent);
 	~GameObject();
 
 	bool Active();
