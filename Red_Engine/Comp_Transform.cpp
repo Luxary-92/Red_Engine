@@ -26,10 +26,10 @@ void Comp_Transform::Inspector_Info() {
 
 
 	ImGui::Text("Rotation: "); ImGui::NewLine();
-	ImGui::InputFloat3("Rotation", ROTATION.ptr());
+	ImGui::InputFloat3(nullptr, ROTATION.ptr());
 
 	ImGui::Text("Scale: "); ImGui::NewLine();
-	ImGui::InputFloat3("Scale", SCALE.ptr());
+	ImGui::InputFloat3(nullptr, SCALE.ptr());
 
 	Transformations_Update();
 

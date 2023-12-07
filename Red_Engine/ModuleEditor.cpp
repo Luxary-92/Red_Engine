@@ -102,6 +102,9 @@ void ModuleEditor::DrawEditor()
             if (ImGui::MenuItem("Console", nullptr, ConsoleState)) {
                 ConsoleState = !ConsoleState;
             }
+            if (ImGui::MenuItem("Assets", nullptr, ConsoleState)) {
+                AssetsState = !AssetsState;
+            }
             ImGui::EndMenu();
         }
 
@@ -200,6 +203,8 @@ void ModuleEditor::DrawEditor()
     HierarchyWindow(HierarchyState);
     //Inspector
     InspectorWindow(InspectorState);
+    //Assets
+    AssetsWindow(AssetsState);
 
     //ImGui::ShowDemoWindow();
     ImGui::Render();
@@ -364,6 +369,8 @@ void ModuleEditor::HierarchyWindow(bool& State)
 {
     ImGui::Begin("Hierarchy", &HierarchyState, ImGuiWindowFlags_MenuBar); {
 
+
+
         ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window "); ImGui::NewLine();
 
         ImGui::End();
@@ -399,6 +406,18 @@ void ModuleEditor::InspectorWindow(bool& State)
         ImGui::End();
     }
 
+
+}
+
+//Assets
+void ModuleEditor::AssetsWindow(bool& State)
+{
+    ImGui::Begin("Assets", &AssetsState, ImGuiWindowFlags_MenuBar); {
+
+        ImGui::TextWrapped("shows all user assets * it can be a simple tree viewer"); ImGui::NewLine();
+
+        ImGui::End();
+    }
 
 }
 

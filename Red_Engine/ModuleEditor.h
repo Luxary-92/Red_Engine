@@ -16,6 +16,7 @@ private:
 	void ConfigurationWindow(bool& State);
 	void HierarchyWindow(bool& State);
 	void InspectorWindow(bool& State);
+	void AssetsWindow(bool& State);
 
 public:
 
@@ -40,6 +41,7 @@ public:
 	bool HierarchyState = true;
 	bool InspectorState = true;
 	bool ConsoleState = true;
+	bool AssetsState = true;
 
 	int screen_width = 1280;
 	int screen_height = 800;
