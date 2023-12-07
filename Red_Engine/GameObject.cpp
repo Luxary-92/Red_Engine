@@ -69,6 +69,23 @@ Comp_Mesh* GameObject::Get_Comp_Mesh() {
 
 Comp_Transform* GameObject::Get_Comp_Transform() {
 
+	for (size_t i = 0; i < Components.size(); i++)
+	{
+		if (Components[i]->type == ComponentType::TRANSFORM)
+		{
+			return (Comp_Transform*)Components[i];
+		}
+	}
 	return nullptr;
+}
+
+void GameObject::Inspector_Editor() {
+
+	for (size_t i = 0; i < Components.size(); i++)
+	{
+		ImGui::Separator();
+
+		Components[i]->Inspector_Info();
+	}
 }
 

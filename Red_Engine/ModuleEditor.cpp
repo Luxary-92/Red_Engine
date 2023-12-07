@@ -216,6 +216,11 @@ bool ModuleEditor::CleanUp()
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
+    framesLog.clear();
+    milisecodsLog.clear();
+    logs->clear();
+    AllGameObjects.clear();
+
 
     return true;
 }
@@ -386,6 +391,9 @@ void ModuleEditor::InspectorWindow(bool& State)
 
         if (ImGui::CollapsingHeader("Components of the selected GameObject", ImGuiTreeNodeFlags_DefaultOpen))
         {
+
+            //Selectet_GameObject->Inspector_Editor();
+
             ImGui::NewLine();
             ImGui::Text("Position: "); ImGui::NewLine();
             ImGui::Text("Rotation: "); ImGui::NewLine();

@@ -21,6 +21,8 @@ public:
 	void Enable();
 	void Disable();
 
+	void Inspector_Editor();
+
 	bool active;
 	bool destroy;
 

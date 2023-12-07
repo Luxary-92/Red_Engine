@@ -11,7 +11,9 @@ Component::~Component(){}
 
 void Component::Update(){}
 
-void Component::ShowEditor() {}
+void Component::Inspector_Info() {
+
+}
 
 void Component::Enable() {}
 

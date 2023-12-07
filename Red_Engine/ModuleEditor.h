@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "GameObject.h"
 
 #include <vector>
 #include <string>
@@ -56,6 +57,11 @@ public:
 	bool texture_2d = false;
 
 	std::deque<std::string>* logs = nullptr;
+
+	//GameObject
+	std::vector<GameObject*> AllGameObjects;
+
+	GameObject* Selectet_GameObject = nullptr;
 };
 
 #endif //MODULE_EDITOR
