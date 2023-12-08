@@ -21,11 +21,12 @@ bool ModuleScene::Start() {
     root = new GameObject(nullptr);
     root->NAME = ("Scene");
 
-    //Load Baker House
     App->texture->LoadTexture("Assets/Baker_house.png");
 
     App->mesh->LoadFBX("Assets/BakerHouse.fbx");
 
+
+    //App->mesh->LoadFBX("Assets/Street environment_V01.fbx");
 
     return true;
 }

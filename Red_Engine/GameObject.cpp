@@ -128,10 +128,26 @@ void GameObject::AddChild(GameObject* child) {
 //GameObject Componets
 Comp_Material* GameObject::Get_Comp_Material() {
 
+	for (size_t i = 0; i < Components.size(); i++)
+	{
+		if (Components[i]->type == ComponentType::MATERIAL)
+		{
+			return (Comp_Material*)Components[i];
+		}
+	}
+
 	return nullptr;
 }
 
 Comp_Mesh* GameObject::Get_Comp_Mesh() {
+
+	for (size_t i = 0; i < Components.size(); i++)
+	{
+		if (Components[i]->type == ComponentType::MESH)
+		{
+			return (Comp_Mesh*)Components[i];
+		}
+	}
 
 	return nullptr;
 }

@@ -27,6 +27,7 @@ public:
     GLuint GetTextureID();
 
 
+
     GLuint textureID = 0;
     GLuint width;
     GLuint height;
