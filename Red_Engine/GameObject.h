@@ -13,8 +13,8 @@ class GameObject
 {
 public:
 
-	GameObject(std::string name);
-	GameObject(std::string name,GameObject* Object_parent);
+	GameObject();
+	GameObject(GameObject* Object_parent);
 	~GameObject();
 
 	std::string NAME;

@@ -6,9 +6,9 @@
 #include "Comp_Mesh.h"
 #include "Comp_Material.h"
 
-GameObject::GameObject(std::string name)
+GameObject::GameObject()
 {
-	this->NAME = name;
+	NAME = "GameObject";
 
 	PARENT = nullptr;
 
@@ -19,9 +19,9 @@ GameObject::GameObject(std::string name)
 
 }
 
-GameObject::GameObject(std::string name,GameObject* Object_parent)
+GameObject::GameObject(GameObject* Object_parent)
 {
-	this->NAME = name;
+	NAME = "GameObject";
 
 	this->PARENT = Object_parent;
 	destroy = false;
@@ -37,7 +37,12 @@ GameObject::GameObject(std::string name,GameObject* Object_parent)
 
 GameObject::~GameObject()
 {
+	NAME = "";
 	transform = nullptr;
+
+	if (destroy && PARENT != nullptr) {
+		PARENT->DeleteChild(this);
+	}
 
 	for (size_t i = 0; i < Components.size(); ++i)
 	{
