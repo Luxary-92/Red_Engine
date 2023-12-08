@@ -319,6 +319,7 @@
     <ClInclude Include="ModuleScene.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -524,5 +525,12 @@
     <None Include="MathGeoLib\include\Math\Matrix.inl">
       <Filter>Externals\MathGeoLib\Math</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Game\Assets\Icon_Red Engine.png" />
+    <Image Include="Game\Assets\Icon.ico" />
   </ItemGroup>
 </Project>
