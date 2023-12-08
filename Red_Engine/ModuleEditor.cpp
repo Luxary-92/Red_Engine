@@ -403,12 +403,14 @@ void ModuleEditor::InspectorWindow(bool& State)
         if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
         {
             ImGui::NewLine();
-            ImGui::TextWrapped("Information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face)."); ImGui::NewLine();
+            ImGui::TextWrapped("Information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face).");
+            ImGui::NewLine();
         }
         if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
         {
             ImGui::NewLine();
-            ImGui::TextWrapped("Display texture size and path.There should be an option to view the selected GameObject with the checkers texture."); ImGui::NewLine();
+            ImGui::TextWrapped("Display texture size and path.There should be an option to view the selected GameObject with the checkers texture."); 
+            ImGui::NewLine();
         }
 
         ImGui::End();

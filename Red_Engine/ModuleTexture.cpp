@@ -3,8 +3,6 @@
 
 #include "ModuleTexture.h"
 
-
-
 ModuleTexture::ModuleTexture(Application* app, bool start_enabled) : Module(app, start_enabled) {}
 
 ModuleTexture::~ModuleTexture() {}
@@ -24,8 +22,6 @@ bool ModuleTexture::CleanUp() {
     ilShutDown();
     //iluShutDown();
     //ilutShutDown();
-
-
 
     return true;
 }
@@ -67,7 +63,6 @@ GLuint ModuleTexture::LoadTexture(const char* path)
 GLuint ModuleTexture::LoadCheckerTexture()
 {
  
-
     for (int i = 0; i < CHECKERS_HEIGHT; i++) {
         for (int j = 0; j < CHECKERS_WIDTH; j++) {
             int c = ((((i & 0x8) == 0) ^ (((j & 0x8)) == 0))) * 255;

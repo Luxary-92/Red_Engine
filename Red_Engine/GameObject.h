@@ -1,6 +1,6 @@
+#pragma once
 #include "Component.h"
 #include "Module.h"
-#pragma once
 #include <vector>
 #include <string>
 

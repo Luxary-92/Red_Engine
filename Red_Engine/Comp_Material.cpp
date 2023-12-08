@@ -1,1 +1,32 @@
-#include "Comp_Material.h"
+//#include "Comp_Material.h"
+//#include "ImGui/imgui.h"
+//
+//Comp_Material::Comp_Material() : Component(nullptr) {
+//
+//	type = ComponentType::MATERIAL;
+//
+//}
+//
+//Comp_Material::Comp_Material(GameObject* owner) : Component(owner){
+//
+//	type = ComponentType::MATERIAL;
+//	Object = owner;
+//}
+//
+//Comp_Material::~Comp_Material()
+//{
+//}
+//
+//void Comp_Material::Inspector_Info()
+//{
+//	ImGui::NewLine();
+//	ImGui::TextWrapped("Display texture size and path.There should be an option to view the selected GameObject with the checkers texture."); 
+//	ImGui::NewLine();
+//
+//}
+//
+//int Comp_Material::ID_Texture()
+//{
+//	return MaterialTexture->textureID;
+//
+//}

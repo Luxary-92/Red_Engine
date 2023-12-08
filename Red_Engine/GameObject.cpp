@@ -96,7 +96,6 @@ void GameObject::AddComponent(Component* component)
 //Hierarchy
 void GameObject::SetParent(GameObject* parent) {
 	PARENT = parent;
-
 }
 
 void GameObject::DeleteChild(GameObject* child) {
