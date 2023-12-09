@@ -16,7 +16,7 @@ Click on the Emmerald Engine folder and Execute Emmerald-Engine.exe
 
 ## Features
 
-Drag and drop 
+Drag and drop: Mesh and Textures
 
 Configrations
 
@@ -33,8 +33,6 @@ Right Click on scene window + W/A/S/D to move the camera
 On scene window press Q/E for going UP/DOWN
 
 Hold Shift + W/A/S/D to move faster
-
-Press F to focus camera position to the center
 
 Alt + Left Click to rotate around the center
 
