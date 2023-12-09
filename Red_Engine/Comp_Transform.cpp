@@ -54,10 +54,6 @@ void Comp_Transform::Update() {
 
 float4x4 Comp_Transform::Matrix_Global(){
 
-	//if (Object->GetParent() == nullptr) return Matrix_Local();
-
-	//return  matrix * Object->GetParent()->transform->getGlobalMatrix();
-
 	return matrix;
 }
 

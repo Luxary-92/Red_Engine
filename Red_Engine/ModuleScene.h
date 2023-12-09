@@ -16,6 +16,8 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
+	void SceneWindow(bool& active);
+
 	GameObject* CreateGameObject(GameObject* parent);
 	GameObject* root = nullptr;
 	GameObject* test;

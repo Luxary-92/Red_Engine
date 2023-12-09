@@ -9,6 +9,8 @@
 #include <string>
 #include <deque>
 
+#define MAX_NAME_CHARACTERS 32
+
 class ModuleEditor : public Module
 {
 private:
@@ -62,6 +64,7 @@ public:
 	std::vector<GameObject*> AllGameObjects;
 
 	GameObject* Selectet_GameObject = nullptr;
+	char NewName[MAX_NAME_CHARACTERS];
 };
 
 #endif //MODULE_EDITOR

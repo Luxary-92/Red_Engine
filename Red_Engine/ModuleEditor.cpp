@@ -389,34 +389,29 @@ void ModuleEditor::InspectorWindow(bool& State)
 {
     ImGui::Begin("Inspector", &InspectorState, ImGuiWindowFlags_MenuBar); {
 
-        if (ImGui::CollapsingHeader("Components of the selected GameObject", ImGuiTreeNodeFlags_DefaultOpen))
+ 
+        if (Selectet_GameObject != NULL)
         {
+            ImGui::Text(Selectet_GameObject->Object_Name.c_str());
+            ImGui::Checkbox("Active", &Selectet_GameObject->active);
+            ImGui::NewLine;
+            strcpy(NewName, Selectet_GameObject->Object_Name.c_str());
+            if (ImGui::InputText(" ", &NewName[0], sizeof(NewName)))
+            {
+                Selectet_GameObject->Object_Name = NewName;
+            }
+            ImGui::NewLine();
 
-            //Selectet_GameObject->Inspector_Editor();
-
-            ImGui::NewLine();
-            ImGui::Text("Position: "); ImGui::NewLine();
-            ImGui::Text("Rotation: "); ImGui::NewLine();
-            ImGui::Text("Scale: "); ImGui::NewLine();
-            ImGui::TextWrapped("Transform: only for display purposes. Show position, rotation and scale for the selected GameObject."); ImGui::NewLine();
+            for (uint m = 0; m < Selectet_GameObject->Components.size(); m++)
+            {
+                if (Selectet_GameObject->selected)
+                {
+                    Selectet_GameObject->Components[m]->Inspector_Info();
+                }
+            }         
         }
-        if (ImGui::CollapsingHeader("Mesh", ImGuiTreeNodeFlags_DefaultOpen))
-        {
-            ImGui::NewLine();
-            ImGui::TextWrapped("Information about the loaded mesh. There should be an option to display its normals(per - triangle and per - face).");
-            ImGui::NewLine();
-        }
-        if (ImGui::CollapsingHeader("Texture", ImGuiTreeNodeFlags_DefaultOpen))
-        {
-            ImGui::NewLine();
-            ImGui::TextWrapped("Display texture size and path.There should be an option to view the selected GameObject with the checkers texture."); 
-            ImGui::NewLine();
-        }
-
-        ImGui::End();
     }
-
-
+    ImGui::End();
 }
 
 //Assets

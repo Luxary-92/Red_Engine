@@ -28,6 +28,7 @@ public:
 
 	bool active;
 	bool destroy;
+	bool selected;
 
 	std::string Object_Name;
 	
