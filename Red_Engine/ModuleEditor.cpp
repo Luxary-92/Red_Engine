@@ -372,14 +372,22 @@ void ModuleEditor::ConfigurationWindow(bool& State)
 //Hierarchy
 void ModuleEditor::HierarchyWindow(bool& State)
 {
+
+
     ImGui::Begin("Hierarchy", &HierarchyState, ImGuiWindowFlags_MenuBar); {
 
+        //std::vector<GameObject*> Object_List = App->scene;
+
+        //for (uint i = 0; i < Object_List.size(); i++)
+        //{
+        //    DrawHierarchyLevel(Object_List[i]);
+        //}
 
 
         ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window "); ImGui::NewLine();
-
-        ImGui::End();
+        
     }
+    ImGui::End();
 
 }
 
@@ -389,7 +397,6 @@ void ModuleEditor::InspectorWindow(bool& State)
 {
     ImGui::Begin("Inspector", &InspectorState, ImGuiWindowFlags_MenuBar); {
 
- 
         if (Selectet_GameObject != NULL)
         {
             ImGui::Text(Selectet_GameObject->Object_Name.c_str());

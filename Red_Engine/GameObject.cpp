@@ -5,6 +5,7 @@
 #include "Comp_Transform.h"
 #include "Comp_Mesh.h"
 #include "Comp_Material.h"
+#include "Comp_Camera.h"
 
 GameObject::GameObject()
 {
@@ -125,42 +126,48 @@ void GameObject::AddChild(GameObject* child) {
 	Children.push_back(child);
 }
 
-//GameObject Componets
-Comp_Material* GameObject::Get_Comp_Material() {
+Component* GameObject::Add_Component(ComponentType type)
+{
+	Component* Comp = nullptr;
 
-	for (size_t i = 0; i < Components.size(); i++)
+	switch (type)
 	{
-		if (Components[i]->type == ComponentType::MATERIAL)
-		{
-			return (Comp_Material*)Components[i];
-		}
+	case(ComponentType::NONE):
+		throw std::runtime_error("Component type not found");
+		break;
+	case(ComponentType::TRANSFORM):
+		Comp = new Comp_Transform(this);
+		break;
+	case(ComponentType::MESH):
+		Comp = new Comp_Mesh(this);
+		break;
+	case(ComponentType::MATERIAL):
+		Comp = new Comp_Material(this);
+		break;
+	case(ComponentType::CAMERA):
+		Comp = new Comp_Camera(this);
+		break;
+	default:
+		throw std::runtime_error("Component type not found");
+		break;
 	}
 
-	return nullptr;
+	Compnet_Vector.push_back(Comp);
+
+	return Comp;
 }
 
-Comp_Mesh* GameObject::Get_Comp_Mesh() {
+Component* GameObject::Get_Component(ComponentType type)
+{
+	std::vector<Component*>::iterator item = Compnet_Vector.begin();
 
-	for (size_t i = 0; i < Components.size(); i++)
-	{
-		if (Components[i]->type == ComponentType::MESH)
-		{
-			return (Comp_Mesh*)Components[i];
+	for (; item != Compnet_Vector.end(); ++item) {
+
+		if ((*item)->type == type) {
+			return (*item);
 		}
 	}
 
-	return nullptr;
-}
-
-Comp_Transform* GameObject::Get_Comp_Transform() {
-
-	for (size_t i = 0; i < Components.size(); i++)
-	{
-		if (Components[i]->type == ComponentType::TRANSFORM)
-		{
-			return (Comp_Transform*)Components[i];
-		}
-	}
 	return nullptr;
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
+#include <vector>
 
 class GameObject;
 class ModuleScene : public Module
@@ -19,8 +20,11 @@ public:
 	void SceneWindow(bool& active);
 
 	GameObject* CreateGameObject(GameObject* parent);
+
+	std::vector<GameObject*> Scene_Obejcts;
 	GameObject* root = nullptr;
 	GameObject* test;
+
 
 private:
 

@@ -20,6 +20,11 @@ bool ModuleScene::Start() {
 
     root = new GameObject(nullptr);
     root->NAME = ("Scene");
+    Scene_Obejcts.push_back(root);
+
+    test = new GameObject(nullptr);
+    root->NAME = ("BakerHouse");
+    root->AddChild(test);
 
     App->texture->LoadTexture("Assets/Baker_house.png");
 

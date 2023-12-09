@@ -43,9 +43,11 @@ public:
 
 	std::vector<GameObject*> Children;
 
-	Comp_Material* Get_Comp_Material();
-	Comp_Mesh* Get_Comp_Mesh();
-	Comp_Transform* Get_Comp_Transform();
+	Component* Add_Component(ComponentType component);;
+	Component* Get_Component(ComponentType type);
+
+	std::vector<Component*> Compnet_Vector;
+
 	Comp_Transform* transform;
 	/*Comp_Camera* Get_Comp_amera();*/
 };
