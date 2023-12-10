@@ -453,7 +453,27 @@ void ModuleEditor::InspectorWindow(bool& State)
                 {
                     Selectet_GameObject->Components[num]->Inspector_Info();
                 }
-            }         
+            } 
+
+            if (ImGui::CollapsingHeader("Add Componet"))
+            {
+                if (ImGui::Selectable("Mesh"))
+                {
+                    if (Selectet_GameObject->GET_Component(ComponentType::MESH) == nullptr)
+                        Selectet_GameObject->ADD_Component(ComponentType::MESH);
+                }
+                if (ImGui::Selectable("Material"))
+                {
+                    if (Selectet_GameObject->GET_Component(ComponentType::MATERIAL) == nullptr)
+                        Selectet_GameObject->ADD_Component(ComponentType::MATERIAL);
+                }
+                if (ImGui::Selectable("Camera"))
+                {
+                    if (Selectet_GameObject->GET_Component(ComponentType::CAMERA) == nullptr)
+                        Selectet_GameObject->ADD_Component(ComponentType::CAMERA);
+                }
+
+            }
         }
     }
     ImGui::End();
