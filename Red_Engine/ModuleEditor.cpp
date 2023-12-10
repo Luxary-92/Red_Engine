@@ -429,16 +429,18 @@ void ModuleEditor::InspectorWindow(bool& State)
 
         if (Selectet_GameObject != NULL)
         {
+            ImGui::Text("Name");
             ImGui::Text(Selectet_GameObject->NAME.c_str());
-            ImGui::Checkbox("Active", &Selectet_GameObject->active);
             ImGui::NewLine;
+            ImGui::Text("Chnage Name");
             strcpy(NewName, Selectet_GameObject->NAME.c_str());
             if (ImGui::InputText(" ", &NewName[0], sizeof(NewName)))
             {
                 Selectet_GameObject->NAME = NewName;
             }
-            ImGui::NewLine();
-
+            ImGui::NewLine;
+            ImGui::Checkbox("Active", &Selectet_GameObject->active);
+            ImGui::NewLine;
             for (uint m = 0; m < Selectet_GameObject->Components.size(); m++)
             {
                 if (Selectet_GameObject->selected)

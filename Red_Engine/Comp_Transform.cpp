@@ -7,6 +7,7 @@ Comp_Transform::Comp_Transform(GameObject* owner) : Component(owner) {
 
 	type = ComponentType::TRANSFORM;
 	Object = owner;
+
 	Reset();
 }
 
@@ -20,22 +21,27 @@ Comp_Transform::~Comp_Transform() {
 void Comp_Transform::Inspector_Info() {
 
 	ImGui::NewLine();
+	if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-	ImGui::Text("Position: "); ImGui::NewLine();
-	ImGui::InputFloat3(nullptr, POSITION.ptr());
+		ImGui::Text("Position: "); ImGui::NewLine();
 
+		//ImGui::InputFloat3(nullptr, POSITION.ptr());
 
-	ImGui::Text("Rotation: "); ImGui::NewLine();
-	ImGui::InputFloat3(nullptr, ROTATION.ptr());
+		ImGui::Text("Rotation: "); ImGui::NewLine();
 
-	ImGui::Text("Scale: "); ImGui::NewLine();
-	ImGui::InputFloat3(nullptr, SCALE.ptr());
+		//ImGui::InputFloat3(nullptr, ROTATION.ptr());
 
-	Transformations_Update();
+		ImGui::Text("Scale: "); ImGui::NewLine();
 
-	ImGui::NewLine();
-	if (ImGui::Button("Reset"))
-		Reset();
+		//ImGui::InputFloat3(nullptr, SCALE.ptr());
+
+		Transformations_Update();
+
+		ImGui::NewLine();
+		if (ImGui::Button("Reset"))
+			Reset();
+	}
+
 }
 
 void Comp_Transform::Reset() {
