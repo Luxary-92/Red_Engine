@@ -386,24 +386,36 @@ void ModuleEditor::ConfigurationWindow(bool& State)
 //Hierarchy
 void ModuleEditor::HierarchyWindow(bool& State)
 {
-
-
     ImGui::Begin("Hierarchy", &HierarchyState, ImGuiWindowFlags_MenuBar); {
 
-        //std::vector<GameObject*> Object_List = App->scene;
+        ModuleScene* sceneModule = App->scene; 
 
-        //for (uint i = 0; i < Object_List.size(); i++)
-        //{
-        //    DrawHierarchyLevel(Object_List[i]);
-        //}
+        if (sceneModule) {
+            std::vector<GameObject*> objectList = sceneModule->GetAllGameObjects();
 
-
-        ImGui::TextWrapped("you should display a list with all GameObjects in this window. The user should be able to select a GameObject through this window "); ImGui::NewLine();
-        
+            for (GameObject* gameObject : objectList) {
+                DrawHierarchyLevel(gameObject);
+            }
+        }
     }
     ImGui::End();
-
 }
+
+void ModuleEditor::DrawHierarchyLevel(GameObject* gameObject)
+{
+    
+    ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+    bool node_open = ImGui::TreeNodeEx(gameObject->NAME.c_str(), flags);
+
+    // If the GameObject has children, recursively draw them
+    if (node_open && !gameObject->Children.empty()) {
+        for (GameObject* child : gameObject->Children) {
+            DrawHierarchyLevel(child);
+        }
+        ImGui::TreePop();
+    }
+}
+
 
 
 //Inspector

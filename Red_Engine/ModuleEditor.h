@@ -19,6 +19,7 @@ private:
 	void ConfigurationWindow(bool& State);
 	void HierarchyWindow(bool& State);
 	void InspectorWindow(bool& State);
+	void DrawHierarchyLevel(GameObject* gameObject);
 	void AssetsWindow(bool& State);
 
 public:

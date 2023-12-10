@@ -25,7 +25,9 @@ public:
 	GameObject* root = nullptr;
 	GameObject* test;
 
-
+	std::vector<GameObject*> GetAllGameObjects() const {
+		return Scene_Obejcts;
+	}
 private:
 
 };
