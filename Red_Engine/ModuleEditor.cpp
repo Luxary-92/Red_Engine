@@ -193,8 +193,22 @@ void ModuleEditor::DrawEditor()
             //here to close the app
             App->AppClose = true;
         }
+        if (ImGui::Button("Play"))
+        {
+
+        }
+        if (ImGui::Button("Stop"))
+        {
+
+        }
+        if (ImGui::Button("Pause"))
+        {
+
+        }
+
         ImGui::EndMainMenuBar();
     }
+
     //Consloe
     ConsoleWindow(ConsoleState);
     //Configuration
