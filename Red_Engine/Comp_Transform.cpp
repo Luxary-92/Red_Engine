@@ -23,23 +23,28 @@ void Comp_Transform::Inspector_Info() {
 	ImGui::NewLine();
 	if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-		ImGui::Text("Position: "); ImGui::NewLine();
+		ImGui::NewLine();
 
-		//ImGui::InputFloat3(nullptr, POSITION.ptr());
+		ImGui::Text("Position: "); 
+		bool Change_P = ImGui::DragFloat3("Pos", &POSITION[0], 0.1f);
+		ImGui::NewLine();
 
-		ImGui::Text("Rotation: "); ImGui::NewLine();
+		ImGui::Text("Rotation: "); 
+		bool Change_R = ImGui::DragFloat3("Rot", &ROTATION[0], 0.1f);
+		ImGui::NewLine();
 
-		//ImGui::InputFloat3(nullptr, ROTATION.ptr());
+		ImGui::Text("Scale: ");
+		bool Change_S = ImGui::DragFloat3("Sca", &SCALE[0], 0.1f);
 
-		ImGui::Text("Scale: "); ImGui::NewLine();
-
-		//ImGui::InputFloat3(nullptr, SCALE.ptr());
-
-		Transformations_Update();
+		
+		ImGui::NewLine();
+		if (ImGui::Button("Update"))
+			Transformations_Update();
 
 		ImGui::NewLine();
 		if (ImGui::Button("Reset"))
 			Reset();
+		ImGui::NewLine();
 	}
 
 }
@@ -54,6 +59,7 @@ void Comp_Transform::Reset() {
 	ROTATION = { 0, 0, 0 };
 	SCALE = { 1, 1, 1 };
 }
+
 void Comp_Transform::Update() {
 
 }

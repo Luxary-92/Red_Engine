@@ -4,11 +4,11 @@
 #include "Globals.h"
 #include "Application.h"
 
-//Comp_Material::Comp_Material() : Component(nullptr) {
-//
-//	type = ComponentType::MATERIAL;
-//
-//}
+Comp_Material::Comp_Material() : Component(nullptr) {
+
+	type = ComponentType::MATERIAL;
+
+}
 
 Comp_Material::Comp_Material(GameObject* owner) : Component(owner){
 

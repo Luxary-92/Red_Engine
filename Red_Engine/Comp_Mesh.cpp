@@ -3,13 +3,13 @@
 #include "Application.h"
 #include "ImGui/imgui.h"
 
-//Comp_Mesh::Comp_Mesh() : Component(nullptr)
-//{
-//	type = ComponentType::MESH;
-//	MESH = nullptr;
-//
-//	FaceNormals = false;
-//}
+Comp_Mesh::Comp_Mesh() : Component(nullptr)
+{
+	type = ComponentType::MESH;
+	MESH = nullptr;
+
+	FaceNormals = false;
+}
 Comp_Mesh::Comp_Mesh(GameObject* owner) : Component(owner)
 {
 	type = ComponentType::MESH;

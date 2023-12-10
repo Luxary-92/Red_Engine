@@ -91,12 +91,6 @@ void GameObject::Update()
 	}
 }
 
-void GameObject::AddComponent(Component* component)
-{
-	component->Object = this;
-	Components.push_back(component);
-}
-
 //Hierarchy
 void GameObject::SetParent(GameObject* parent) {
 	PARENT = parent;
@@ -168,21 +162,6 @@ Component* GameObject::Get_Component(ComponentType type)
 
 	return nullptr;
 }
-
-//Editor
-void GameObject::Inspector_Editor() {
-
-
-
-
-	for (size_t i = 0; i < Components.size(); i++)
-	{
-		ImGui::Separator();
-
-		Components[i]->Inspector_Info();
-	}
-}
-
 
 std::vector<Component*> GameObject::GetComponentsOfType(ComponentType type) {
 

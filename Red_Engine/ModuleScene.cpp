@@ -19,11 +19,12 @@ bool ModuleScene::Init()
 bool ModuleScene::Start() {
 
     root = new GameObject(nullptr);
-    root->NAME = ("Scene");
+    root->NAME = (" Scene");
     Scene_Obejcts.push_back(root);
 
+
     test = new GameObject(nullptr);
-    test->NAME = ("BakerHouse"); 
+    test->NAME = (" BakerHouse"); 
     root->AddChild(test);
 
 
