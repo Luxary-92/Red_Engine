@@ -13,6 +13,8 @@ GameObject::GameObject()
 
 	PARENT = nullptr;
 
+
+
 	transform = new Comp_Transform(this);
 	Components.push_back(transform);
 
@@ -25,16 +27,17 @@ GameObject::GameObject(GameObject* Object_parent)
 	NAME = "GameObject";
 
 	this->PARENT = Object_parent;
-	destroy = false;
-
+	
 	if (Object_parent != nullptr) {
 		Object_parent->Children.push_back(this);
 	}
 
-	transform = new Comp_Transform(this);
+	transform = (Comp_Transform*)ADD_Component(ComponentType::TRANSFORM);
 
+	//transform = new Comp_Transform(this);
+	//Components.push_back(transform);
 
-	Components.push_back(transform);
+	destroy = false;
 }
 
 
@@ -146,7 +149,7 @@ Component* GameObject::ADD_Component(ComponentType type)
 		break;
 	}
 
-	Compnet_Vector.push_back(Comp);
+	Components.push_back(Comp);
 
 	return Comp;
 }
