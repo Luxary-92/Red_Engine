@@ -403,22 +403,33 @@ void ModuleEditor::HierarchyWindow(bool& State)
 
 void ModuleEditor::DrawHierarchyLevel(GameObject* gameObject)
 {
-    
-    ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+    ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_SpanAvailWidth;
 
-    bool node_open = ImGui::TreeNodeEx(gameObject->NAME.c_str(), flags);
+    if (gameObject->Children.empty()) {
+        ImGui::Selectable(gameObject->NAME.c_str());
+    }
+    else {
+        bool node_open = ImGui::TreeNodeEx(gameObject->NAME.c_str(), flags);
 
-    if (node_open && !gameObject->Children.empty()) {
-
-        gameObject->selected = true;
-        Selectet_GameObject = gameObject;
-
-        for (GameObject* child : gameObject->Children) {
-            DrawHierarchyLevel(child);
+        if (ImGui::IsItemClicked()) {
+            // Acción cuando clickas
+            gameObject->selected = true;
+            Selectet_GameObject = gameObject;
         }
-        ImGui::TreePop();
+
+        if (node_open) {
+            for (GameObject* child : gameObject->Children) {
+                DrawHierarchyLevel(child);
+            }
+            ImGui::TreePop();
+        }
     }
 }
+
+
+
+
+
 
 
 
