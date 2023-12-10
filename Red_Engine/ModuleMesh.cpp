@@ -67,6 +67,20 @@ bool ModuleMesh::LoadFBX(const char* path) {
         meshes.push_back(mesh);
     }
 
+    for (int i = 0; i < NumberOfMeshesInFBX(); ++i) {
+        //GameObject para cada mesh
+        GameObject* newMeshObject = App->scene->CreateGameObject(App->scene->root);
+
+        //Agregar un componente Comp_Mesh al GameObject
+        Comp_Mesh* meshComponent = newMeshObject->Add_Component<Comp_Mesh>();
+
+        // Obtener la información de la malla actual
+        const MeshData& currentMesh = meshes[i]; 
+
+        // Configurar el Comp_Mesh
+        meshComponent->SetMeshInfo(currentMesh.vertices, currentMesh.indices);
+    }
+
     return true;
 }
 

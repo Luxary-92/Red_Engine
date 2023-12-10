@@ -182,3 +182,16 @@ void GameObject::Inspector_Editor() {
 	}
 }
 
+
+std::vector<Component*> GameObject::GetComponentsOfType(ComponentType type) {
+	std::vector<Component*> componentsOfType;
+
+	for (size_t i = 0; i < Components.size(); ++i) {
+		if (Components[i]->type == type) {
+			componentsOfType.push_back(Components[i]);
+		}
+	}
+
+	return componentsOfType;
+}
+

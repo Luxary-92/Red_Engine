@@ -10,6 +10,8 @@
 #include "Globals.h"
 #include "glmath.h"
 #include "ModuleRenderer3D.h"
+#include "GameObject.h"
+#include "Comp_Mesh.h"
 
 #include <vector>
 
@@ -30,6 +32,8 @@ public:
     bool CleanUp() override;
     bool LoadFBX(const char* path);
     void DrawMesh();
+    const std::vector<MeshData>& GetLoadedMeshes() const { return meshes; }
+    size_t NumberOfMeshesInFBX() const { return meshes.size(); }
 
 private:
     std::vector<MeshData> meshes;

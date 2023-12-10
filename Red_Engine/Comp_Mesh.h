@@ -1,7 +1,11 @@
 #pragma once
+#include "Globals.h"
+#include "GameObject.h"
 #include "Component.h"
+//#include "ModuleMesh.h"
+#include <string>
 
-class Mesh;
+struct MeshData;
 
 class Comp_Mesh : public Component
 {
@@ -10,9 +14,10 @@ public:
 	Comp_Mesh(GameObject* owner);
 	~Comp_Mesh();
 
-	Mesh* MESH;
+	MeshData* MESH;
 
 	bool FaceNormals;
 
 	void Inspector_Info();
+	void SetMeshInfo(const std::vector<float>& vertices, const std::vector<unsigned int>& indices);
 };

@@ -9,6 +9,7 @@ class Comp_Material;
 class Comp_Mesh;
 class Comp_Transform;
 
+
 class GameObject
 {
 public:
@@ -47,7 +48,17 @@ public:
 	Component* Get_Component(ComponentType type);
 
 	std::vector<Component*> Compnet_Vector;
+	std::vector<Component*> GetComponentsOfType(ComponentType type);
 
 	Comp_Transform* transform;
+
+
+	template<typename T>
+	T* Add_Component() {
+		T* comp = new T(this);
+		Compnet_Vector.push_back(comp);
+		return comp;
+	}
+
 	/*Comp_Camera* Get_Comp_amera();*/
 };
