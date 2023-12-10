@@ -447,11 +447,11 @@ void ModuleEditor::InspectorWindow(bool& State)
             if (ImGui::Checkbox("Active", &Selectet_GameObject->active))
                 (lighting) ? Selectet_GameObject->Disable() : Selectet_GameObject->Active();
 
-            for (uint m = 0; m < Selectet_GameObject->Components.size(); m++)
+            for (uint num = 0; num < Selectet_GameObject->Components.size(); num++)
             {
                 if (Selectet_GameObject->selected)
                 {
-                    Selectet_GameObject->Components[m]->Inspector_Info();
+                    Selectet_GameObject->Components[num]->Inspector_Info();
                 }
             }         
         }

@@ -22,6 +22,10 @@ bool ModuleScene::Start() {
     root->NAME = (" Scene");
     Scene_Obejcts.push_back(root);
 
+    cam = new GameObject(nullptr);
+    cam->NAME = (" Camera");
+    root->ADD_Component(ComponentType::CAMERA);
+    root->AddChild(cam);
 
     test = new GameObject(nullptr);
     test->NAME = (" BakerHouse"); 

@@ -32,7 +32,6 @@ public:
 
 	std::string Object_Name;
 	
-	void AddComponent(Component* component);
 	std::vector<Component*> Components;
 
 	// Hierarchy
@@ -43,8 +42,8 @@ public:
 
 	std::vector<GameObject*> Children;
 
-	Component* Add_Component(ComponentType component);;
-	Component* Get_Component(ComponentType type);
+	Component* ADD_Component(ComponentType component);;
+	Component* GET_Component(ComponentType type);
 
 	std::vector<Component*> Compnet_Vector;
 	std::vector<Component*> GetComponentsOfType(ComponentType type);

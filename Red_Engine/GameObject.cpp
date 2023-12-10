@@ -32,6 +32,8 @@ GameObject::GameObject(GameObject* Object_parent)
 	}
 
 	transform = new Comp_Transform(this);
+
+
 	Components.push_back(transform);
 }
 
@@ -118,7 +120,7 @@ void GameObject::AddChild(GameObject* child) {
 	Children.push_back(child);
 }
 
-Component* GameObject::Add_Component(ComponentType type)
+Component* GameObject::ADD_Component(ComponentType type)
 {
 	Component* Comp = nullptr;
 
@@ -149,7 +151,7 @@ Component* GameObject::Add_Component(ComponentType type)
 	return Comp;
 }
 
-Component* GameObject::Get_Component(ComponentType type)
+Component* GameObject::GET_Component(ComponentType type)
 {
 	std::vector<Component*>::iterator item = Compnet_Vector.begin();
 
