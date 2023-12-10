@@ -1,3 +1,6 @@
+#pragma once
+#include "Globals.h"
+#include "GameObject.h"
 #include "Component.h"
 
 class Comp_Camera : public Component

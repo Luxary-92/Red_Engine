@@ -429,13 +429,13 @@ void ModuleEditor::InspectorWindow(bool& State)
 
         if (Selectet_GameObject != NULL)
         {
-            ImGui::Text(Selectet_GameObject->Object_Name.c_str());
+            ImGui::Text(Selectet_GameObject->NAME.c_str());
             ImGui::Checkbox("Active", &Selectet_GameObject->active);
             ImGui::NewLine;
-            strcpy(NewName, Selectet_GameObject->Object_Name.c_str());
+            strcpy(NewName, Selectet_GameObject->NAME.c_str());
             if (ImGui::InputText(" ", &NewName[0], sizeof(NewName)))
             {
-                Selectet_GameObject->Object_Name = NewName;
+                Selectet_GameObject->NAME = NewName;
             }
             ImGui::NewLine();
 

@@ -39,7 +39,9 @@ void Comp_Camera::Disable()
 void Comp_Camera::Inspector_Info()
 {
 	ImGui::NewLine();
-	ImGui::TextWrapped("a component with settings that can be modified.");
-	ImGui::NewLine();
+	if (ImGui::CollapsingHeader("Camera", ImGuiTreeNodeFlags_DefaultOpen)) {
+		ImGui::TextWrapped("a component with settings that can be modified.");
+	}
 
+	ImGui::NewLine();
 }

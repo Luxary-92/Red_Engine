@@ -56,8 +56,6 @@ GameObject::~GameObject()
 	{
 		Children[i] = nullptr;
 	}
-
-
 }
 
 bool GameObject::Active()
@@ -187,6 +185,7 @@ void GameObject::Inspector_Editor() {
 
 
 std::vector<Component*> GameObject::GetComponentsOfType(ComponentType type) {
+
 	std::vector<Component*> componentsOfType;
 
 	for (size_t i = 0; i < Components.size(); ++i) {
