@@ -405,10 +405,14 @@ void ModuleEditor::DrawHierarchyLevel(GameObject* gameObject)
 {
     
     ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+
     bool node_open = ImGui::TreeNodeEx(gameObject->NAME.c_str(), flags);
 
-    // If the GameObject has children, recursively draw them
     if (node_open && !gameObject->Children.empty()) {
+
+        gameObject->selected = true;
+        Selectet_GameObject = gameObject;
+
         for (GameObject* child : gameObject->Children) {
             DrawHierarchyLevel(child);
         }

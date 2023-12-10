@@ -174,6 +174,9 @@ Component* GameObject::Get_Component(ComponentType type)
 //Editor
 void GameObject::Inspector_Editor() {
 
+
+
+
 	for (size_t i = 0; i < Components.size(); i++)
 	{
 		ImGui::Separator();
