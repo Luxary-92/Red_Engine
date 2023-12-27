@@ -12,7 +12,7 @@ Enric Arxer Cortés -> Github account: [Luxary-92](https://github.com/Luxary-92)
 ## Install
 Download the most recent release
 Extract the .zip
-Click on the Emmerald Engine folder and Execute Emmerald-Engine.exe
+Click on the Emmerald Engine folder and Execute Red-Engine.exe
 
 ## Features
 
